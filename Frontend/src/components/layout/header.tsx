@@ -46,12 +46,7 @@ const navItems = [
 ];
 
 const services = [
-  {
-    name: "Corporate & Government Training",
-    images: [ct1.src, ct2.src, ct3.src, ct4.src],
-    description: "Professional training programs for corporate and government sectors.",
-  },
-  {
+   {
     name: "Development",
     subOptions: [
       {
@@ -72,6 +67,17 @@ const services = [
     ],
   },
   {
+    name: "Corporate & Government Training",
+    images: [ct1.src, ct2.src, ct3.src, ct4.src],
+    description: "Professional training programs for corporate and government sectors.",
+  },
+  {
+    name: "Outbound Training Program",
+    images: [out1.src, out2.src, out3.src, out4.src],
+    description: "Outdoor experiential learning and team-building programs.",
+  },
+ 
+  {
     name: "Ministry of Defence",
     subOptions: [
       {
@@ -91,11 +97,7 @@ const services = [
       },
     ],
   },
-  {
-    name: "Outbound Training Program",
-    images: [out1.src, out2.src, out3.src, out4.src],
-    description: "Outdoor experiential learning and team-building programs.",
-  },
+  
   {
     name: "Student Training",
     images: [studtraining1.src, studtraining2.src, studtraining3.src, studtraining4.src],

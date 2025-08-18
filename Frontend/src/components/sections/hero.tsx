@@ -10,7 +10,7 @@ import updateslide5 from "../../assets/updateslide5.png";
 // import slide2 from "../../assets/slide2.jpg";
 import updateslide2 from "../../assets/updateslide2.png";
 import slide3 from "../../assets/slide3.jpg";
-import slide5 from "../../assets/slide5.png";
+import slide11 from "../../assets/slide11.png";
 import updateslide3 from "../../assets/updateslide3.png";
 
 import {
@@ -23,7 +23,7 @@ import {
 
 const heroSlides = [
   {
-    image: updateslide5,
+    image: slide11,
     dataAiHint: "modern classroom technology",
     superTitle: "100+ Courses",
     description:
