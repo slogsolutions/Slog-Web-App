@@ -95,6 +95,7 @@ export default function AiSuggester() {
                 )}
             </CardContent>
         </Card>
+        
       </div>
     </section>
   );

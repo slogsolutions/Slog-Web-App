@@ -28,7 +28,7 @@ export default function Partners() {
         {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-            Learn with Our Partners
+            Our Partners
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
             Unlock opportunities for collaboration and growth by learning with our esteemed industry partners. Join us today!

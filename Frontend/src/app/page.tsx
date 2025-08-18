@@ -15,7 +15,7 @@ export default function Home() {
       <main>
         <Hero />
         <Courses />
-        <AiSuggester />
+        {/* <AiSuggester /> */}
         <WhyChooseUs />
         <Partners />
         <About />
