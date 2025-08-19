@@ -16,7 +16,7 @@ export default function MentorsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/mentors/")
+    fetch("https://slog-web-app.onrender.com/api/mentors/")
       .then(res => res.json())
       .then(data => {
         setMentors(data);

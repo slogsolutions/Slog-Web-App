@@ -38,7 +38,7 @@ export default function Courses() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/courses/")
+    fetch("https://slog-web-app.onrender.com/api/courses/")
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);
