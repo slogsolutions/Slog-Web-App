@@ -38,12 +38,15 @@ export default function Courses() {
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   useEffect(() => {
-    fetch("https://slog-web-app.onrender.com/api/courses/")
-      .then((res) => res.json())
-      .then((data) => {
-        setCourses(data);
-      });
-  }, []);
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+  fetch(`${API_URL}/api/courses/`)
+    .then((res) => res.json())
+    .then((data) => setCourses(data))
+    .catch((err) => console.error("Fetch error:", err));
+}, []);
+
+
 
   useEffect(() => {
     if (selectedCategory) {

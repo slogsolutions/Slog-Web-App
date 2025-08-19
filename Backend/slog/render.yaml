@@ -4,6 +4,7 @@ services:
     env: python
     buildCommand: "./build.sh"
     startCommand: "gunicorn slog.wsgi:application"
+    staticPublishPath: ./media
     disk:
       name: media
       mountPath: /opt/render/project/src/media
