@@ -28,6 +28,12 @@ const nextConfig: NextConfig = {
         port: '8000',
         pathname: '/media/**',
       },
+      {
+        protocol: 'https', // Render production
+        hostname: 'slog-web-app.onrender.com',
+        port: '',
+        pathname: '/media/**',
+      },
     ],
   },
 };

@@ -25,21 +25,21 @@ SECRET_KEY = 'django-insecure-ov#-8q#qi45oiq!8bumx40$j_hc1538q%g9@kbigytisr#r2v_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://slog-web-app.vercel.app/','https://slog-web-app.onrender.com']
+ALLOWED_HOSTS = ['https://slog-web-app.vercel.app','https://slog-web-app.onrender.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'jazzmin',
+    'corsheaders',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'corsheaders',
     'main',
 ]
 
@@ -135,6 +135,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL_FULL = "https://slog-web-app.onrender.com" + MEDIA_URL
 CORS_ALLOWED_ORIGINS = [
     "https://slog-web-app.vercel.app/",
 ]

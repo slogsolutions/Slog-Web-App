@@ -1,6 +1,10 @@
 services:
   - type: web
-    name: django-backend
+    name: slog-backend
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn yourproject.wsgi:application"
+    startCommand: "gunicorn slog.wsgi:application"
+    disk:
+      name: media
+      mountPath: /opt/render/project/src/media
+      sizeGB: 1
