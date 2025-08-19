@@ -15,3 +15,4 @@ class CourseViewSet(viewsets.ModelViewSet):
 class MentorViewSet(viewsets.ModelViewSet):
     queryset = Mentor.objects.all()
     serializer_class = MentorSerializer
+

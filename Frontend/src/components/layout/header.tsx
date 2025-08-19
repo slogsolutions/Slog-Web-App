@@ -154,7 +154,7 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex-shrink-0">
-            <Image src={logo} alt="Slog Logo" width={150} height={57} priority />
+            <Image src={logo} alt="Slog Logo" width={100} height={57} priority />
           </Link>
 
 

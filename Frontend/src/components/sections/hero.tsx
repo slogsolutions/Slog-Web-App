@@ -3,15 +3,11 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Typewriter } from "react-simple-typewriter";
-
-import updateslide4 from "../../assets/updateslide4.png";
-
-import updateslide5 from "../../assets/updateslide5.png";
-// import slide2 from "../../assets/slide2.jpg";
-import updateslide2 from "../../assets/updateslide2.png";
+import updateslide2 from "../../assets/updateslide2.1.png";
 import slide3 from "../../assets/slide3.jpg";
 import slide11 from "../../assets/slide11.png";
 import updateslide3 from "../../assets/updateslide3.png";
+import student_slide from "../../assets/slide10.png";
 
 import {
   Carousel,
@@ -27,7 +23,7 @@ const heroSlides = [
     dataAiHint: "modern classroom technology",
     superTitle: "100+ Courses",
     description:
-      "SLOG provides the Best Summer Training / Internship in Dehradun, 100% Job Guaranteed Training Module, Project Based Training, and Placement Assistance.",
+      "SLOG offers advanced Summer Training and Internship programs in Dehradun, integrating practical project-based modules, a 100% Job Guarantee, and structured placement assistance to bridge the gap between education and industry.",
   },
   {
     image: slide3,
@@ -38,16 +34,6 @@ const heroSlides = [
       "With our online platform, you can access course materials and learn from anywhere, at any time that fits your schedule.",
   },
   {
-    // image: slide2,
-    image:updateslide2,
-    dataAiHint: "students collaborating computer",
-    superTitle: "Expert Mentors",
-    title: "Learn from Industry Leaders",
-    description:
-      "Our instructors are experienced professionals passionate about sharing their knowledge and helping you succeed in your career.",
-  },
-  
-  {
     // image: slide5,
     image: updateslide3,
     dataAiHint: "smiling face",
@@ -56,6 +42,23 @@ const heroSlides = [
     description:
       "A wonderful category of top quality gadgets at an affordable price. Be the first to get the deal. First time customers will get 10% on their purhase.",
   },
+  {
+    // image: slide2,
+    image:updateslide2,
+    dataAiHint: "students collaborating computer",
+    superTitle: "Expert Mentors",
+    title: "Learn from Industry Leaders",
+    description:
+      "Our instructors are experienced professionals passionate about sharing their knowledge and helping you succeed in your career.",
+  },
+  {
+    image:student_slide,
+    dataAiHint: "students collaborating computer",
+    superTitle: "Expert Mentors",
+    title: "Learn from Industry Leaders",
+    description:
+      "Our instructors are experienced professionals passionate about sharing their knowledge and helping you succeed in your career.",
+  },  
 ];
 
 export default function Hero() {
@@ -86,63 +89,6 @@ export default function Hero() {
                 <div className="absolute inset-0 z-10" />
 
                 {/* Slide Content */}
-
-
-
-{/* 
-                <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                    <div
-                      className={`flex flex-col md:flex-row ${
-                        index > 0 ? "md:flex-row-reverse" : ""
-                      } items-center justify-between gap-8`}
-                    >
-                      <div
-                        className={`max-w-3xl text-black ${
-                          index > 0 ? "text-right text-white" : "text-left"
-                        }`}
-                      >
-                        <div className="[font-family:'Poiret_One',Helvetica] text-6xl md:text-7xl leading-[80px] font-semibold tracking-wide bg-gradient-to-r from-blue-300 via-cyan-300 to-teal-500 bg-clip-text text-transparent mb-4">
-                          {slide.superTitle}
-                        </div>
-
-                        {index === 0 ? (
-                          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                            <Typewriter
-                              words={[
-                                "100+ Experienced Mentors",
-                                "Placement Support System",
-                                "Get 250+ Online/Offline Courses",
-                                "Industry Level Training Curriculum",
-                              ]}
-                              loop={0}
-                              cursor
-                              cursorStyle="|"
-                              typeSpeed={50}
-                              deleteSpeed={30}
-                              delaySpeed={1500}
-                            />
-                          </h2>
-                        ) : (
-                          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                            {slide.title}
-                          </h2>
-                        )}
-
-                        <p className="text-2xl mt-2 leading-10">
-                          {slide.description}
-                        </p>
-
-                        <Button
-                          size="lg"
-                          className="mt-8 px-8 py-6 text-lg rounded-lg"
-                        >
-                          KNOW MORE
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="absolute inset-0 flex items-center justify-center z-20">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
     <div
@@ -151,14 +97,13 @@ export default function Hero() {
       } items-center justify-between gap-8`}
     >
       <div
-        className={`max-w-3xl ${
-          index % 2 !== 0 ? "text-right text-white" : "text-left text-black"
+        className={`max-w-3xl  text-white ${
+          index % 2 !== 0 ? "text-right " : "text-left "
         }`}
       >
         <div className="[font-family:'Poiret_One',Helvetica] text-6xl md:text-7xl leading-[80px] font-semibold tracking-wide bg-gradient-to-r from-blue-300 via-cyan-300 to-teal-500 bg-clip-text text-transparent mb-4">
           {slide.superTitle}
         </div>
-
         {/* Title / Typewriter effect on first slide */}
         {index === 0 ? (
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -192,24 +137,10 @@ export default function Hero() {
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-
         {/* Controls */}
         <div className="hidden md:block">
           <CarouselPrevious className="absolute left-8 top-1/2 -translate-y-1/2 z-30" />

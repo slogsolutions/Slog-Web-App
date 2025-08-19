@@ -1,196 +1,12 @@
-// import Image from "next/image";
-// import {
-//   Carousel,
-//   CarouselContent,
-//   CarouselItem,
-//   CarouselNext,
-//   CarouselPrevious,
-// } from "@/components/ui/carousel";
-// import { Card, CardContent } from "@/components/ui/card";
-// import { Star } from "lucide-react";
-
-// const testimonials = [
-//   {
-//     quote: "I recently hired a freelancer for a project, and I couldn't be happier with the results. Their work exceeded my expectations in every way. Communication was smooth, deadlines were met, and the quality was outstanding.",
-//     author: "Thomas Shelby",
-//     company: "CEO at Peaky Blinders",
-//     avatar: "https://placehold.co/70x70.png",
-//     dataAiHint: "person portrait",
-//     logo: "https://placehold.co/100x40.png",
-//     logoAiHint: "company logo"
-//   },
-//   {
-//     quote: "The course structure is fantastic and the mentors are incredibly supportive. I was able to build a complete project from scratch, which significantly boosted my portfolio and confidence. Highly recommended!",
-//     author: "Grace Burgess",
-//     company: "Project Manager",
-//     avatar: "https://placehold.co/70x70.png",
-//     dataAiHint: "woman portrait",
-//     logo: "https://placehold.co/100x40.png",
-//     logoAiHint: "tech company logo"
-//   },
-//   {
-//     quote: "As a complete beginner, I was hesitant, but Slog Solutions made learning to code accessible and fun. The community is a huge plus, always there to help with any questions. I'm now working as a junior developer!",
-//     author: "Arthur Shelby",
-//     company: "Junior Developer",
-//     avatar: "https://placehold.co/70x70.png",
-//     dataAiHint: "man smiling",
-//     logo: "https://placehold.co/100x40.png",
-//     logoAiHint: "startup logo"
-//   },
-// ];
-
-// export default function Testimonials() {
-//   return (
-//     // <section id="testimonials" className="py-20 md:py-28 bg-primary/5">
-//     //   <div className="container rounded-lg mx-auto px-4 sm:px-6 lg:px-8">
-//     //     <div className="grid lg:grid-cols-12 gap-8 items-center">
-//     //         <div className="lg:col-span-4 text-center lg:text-left">
-//     //             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-//     //                 WHAT OUR<br/>CUSTOMERS SAY
-//     //             </h2>
-//     //             <p className="text-gray-600 mt-4">Real stories from real learners.</p>
-//     //         </div>
-//     //         <div className="lg:col-span-8">
-//     //             <Carousel
-//     //                 opts={{ align: "start", loop: true }}
-//     //                 className="w-full"
-//     //             >
-//     //                 <CarouselContent>
-//     //                 {testimonials.map((testimonial, index) => (
-//     //                     <CarouselItem key={index} className="md:basis-1/1 lg:basis-1/1">
-//     //                     <div className="p-2">
-//     //                         <Card className="border-0 bg-white shadow-lg rounded-xl">
-//     //                             <CardContent className="p-8">
-//     //                                 <div className="flex mb-4">
-//     //                                     {[...Array(5)].map((_, i) => <Star key={i} className="text-yellow-400 fill-current" />)}
-//     //                                 </div>
-//     //                                 <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
-//     //                                 <div className="flex items-center justify-between">
-//     //                                     <div className="flex items-center gap-4">
-//     //                                         <Image
-//     //                                             src={testimonial.avatar}
-//     //                                             alt={testimonial.author}
-//     //                                             width={60}
-//     //                                             height={60}
-//     //                                             className="rounded-full"
-//     //                                             data-ai-hint={testimonial.dataAiHint}
-//     //                                         />
-//     //                                         <div>
-//     //                                             <p className="font-bold text-gray-900">{testimonial.author}</p>
-//     //                                             <p className="text-sm text-gray-500">{testimonial.company}</p>
-//     //                                         </div>
-//     //                                     </div>
-//     //                                     <Image
-//     //                                         src={testimonial.logo}
-//     //                                         alt={`${testimonial.company} logo`}
-//     //                                         width={100}
-//     //                                         height={40}
-//     //                                         className="object-contain"
-//     //                                         data-ai-hint={testimonial.logoAiHint}
-//     //                                     />
-//     //                                 </div>
-//     //                             </CardContent>
-//     //                         </Card>
-//     //                     </div>
-//     //                     </CarouselItem>
-//     //                 ))}
-//     //                 </CarouselContent>
-//     //                 <div className="hidden sm:block">
-//     //                     <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2" />
-//     //                     <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2" />
-//     //                 </div>
-//     //             </Carousel>
-//     //         </div>
-//     //     </div>
-//     //   </div>
-//     // </section>
-//     <section id="testimonials" className="py-20 md:py-28">
-//   <div className="   sm:px-6 lg:px-8">
-//     <div className="bg-[#c9d7d7] rounded-[3rem]  md:p-16 shadow-sm relative">
-      
-
-//       <div className="grid lg:grid-cols-12 gap-8 items-center">
-//         {/* Left text */}
-//         <div className="lg:col-span-4 text-center lg:text-left">
-//           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
-//             WHAT OUR <br /> CUSTOMERS SAY
-//           </h2>
-//           <p className="text-gray-700 mt-4 text-lg">
-//             Real stories from real learners.
-//           </p>
-//         </div>
-
-//         {/* Testimonials Carousel */}
-//         <div className="lg:col-span-8">
-//           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-//             <CarouselContent>
-//               {testimonials.map((testimonial, index) => (
-//                 <CarouselItem key={index} className="md:basis-1/1">
-//                   <div className="p-2">
-//                     <Card className="border-0  shadow-md rounded-2xl">
-//                       <CardContent className="p-8">
-//                         <div className="flex mb-4">
-//                           {[...Array(5)].map((_, i) => (
-//                             <Star key={i} className="text-yellow-400 fill-current" />
-//                           ))}
-//                         </div>
-//                         <p className="text-gray-700 italic mb-6">
-//                           "{testimonial.quote}"
-//                         </p>
-//                         <div className="flex items-center justify-between">
-//                           <div className="flex items-center gap-4">
-//                             <Image
-//                               src={testimonial.avatar}
-//                               alt={testimonial.author}
-//                               width={60}
-//                               height={60}
-//                               className="rounded-full"
-//                             />
-//                             <div>
-//                               <p className="font-bold text-gray-900">
-//                                 {testimonial.author}
-//                               </p>
-//                               <p className="text-sm text-gray-600">
-//                                 {testimonial.company}
-//                               </p>
-//                             </div>
-//                           </div>
-//                           <Image
-//                             src={testimonial.logo}
-//                             alt={`${testimonial.company} logo`}
-//                             width={100}
-//                             height={40}
-//                             className="object-contain"
-//                           />
-//                         </div>
-//                       </CardContent>
-//                     </Card>
-//                   </div>
-//                 </CarouselItem>
-//               ))}
-//             </CarouselContent>
-//             <div className="hidden sm:block">
-//               <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2" />
-//               <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2" />
-//             </div>
-//           </Carousel>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// </section>
-
-//   );
-// }
-
-
-
-
 "use client"
 
 import { useState } from "react"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import dq from "../../assets/dquotes.png"
+import av1 from "../../assets/av1.png"
+import av2 from "../../assets/av2.png"
+import av3 from "../../assets/av3.png"
 
 const testimonials = [
   {
@@ -198,21 +14,21 @@ const testimonials = [
     text: "This product has completely transformed how we operate our business. The attention to detail and customer service is unmatched. I couldn't be happier with our decision to work with this team.",
     name: "Thomas Shelby",
     designation: "CEO at Picky Blinders",
-    avatar: "/professional-businessman-portrait.png",
+    avatar: av1.src,
   },
   {
     id: 2,
     text: "Outstanding quality and exceptional service. The team went above and beyond to ensure our needs were met. This is exactly what we were looking for in a business partner.",
     name: "Sarah Johnson",
     designation: "Marketing Director at TechCorp",
-    avatar: "/professional-businesswoman-portrait.png",
+    avatar: av2.src,
   },
   {
     id: 3,
     text: "Incredible results from day one. The professionalism and expertise shown by the team has exceeded all our expectations. Highly recommend to anyone looking for quality service.",
     name: "Michael Chen",
     designation: "Founder at StartupLab",
-    avatar: "/young-entrepreneur-portrait.png",
+    avatar: av3.src,
   },
 ]
 
@@ -255,7 +71,7 @@ export default function TestimonialsSection() {
                   onClick={prevTestimonial}
                   className="rounded-full border-2 border-foreground hover:bg-foreground hover:text-background transition-colors bg-transparent"
                 >
-                  <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-5 w-5" />
                 </Button>
                 <Button
                   variant="outline"
@@ -272,10 +88,10 @@ export default function TestimonialsSection() {
             <div className="relative">
               <div className="space-y-6">
                 {/* Quote icon */}
-                <Quote className="h-8 w-8 text-muted-foreground" />
+                <img src={dq.src} alt="Quote" className="h-5 w-5 text-muted-foreground" />
 
                 {/* Testimonial text */}
-                <p className="text-lg md:text-xl text-foreground leading-relaxed font-medium">
+                <p className="text-lg md:text-xl text-foreground leading-relaxed font-medium pl-2 text-justify">
                   {currentTestimonial.text}
                 </p>
 
@@ -283,19 +99,69 @@ export default function TestimonialsSection() {
                 <div className="flex items-center gap-4 pt-4">
                   {/* Decorative hand-drawn style arrow */}
                   <div className="hidden md:block">
-                    <svg
-                      width="60"
-                      height="40"
-                      viewBox="0 0 60 40"
-                      className="text-muted-foreground"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M5 20 Q20 5 35 20 Q50 35 55 20" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M50 15 L55 20 L50 25" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="160"
+    height="160"
+    viewBox="0 0 200 200"
+    fill="none"
+    stroke="url(#arrowGradient)"
+    strokeWidth="4"
+    className="text-muted-foreground"
+  >
+    {/* Gradient definition */}
+    <defs>
+      <linearGradient id="arrowGradient" x1="0" y1="0" x2="200" y2="200">
+        <stop offset="0%" stopColor="#090909ff" />   {/* Tailwind blue-500 */}
+        <stop offset="50%" stopColor="#050506ff" />  {/* Tailwind violet-500 */}
+        <stop offset="100%" stopColor="#090708ff" /> {/* Tailwind pink-500 */}
+      </linearGradient>
+    </defs>
+
+    {/* Curved path */}
+    <path
+      d="M20 40 
+         C10 100, 120 60, 80 100 
+         C60 120, 120 140, 150 120"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="4"
+      strokeDasharray="500"
+      strokeDashoffset="500"
+    >
+      <animate
+        attributeName="stroke-dashoffset"
+        from="500"
+        to="0"
+        dur="2s"
+        fill="freeze"
+      />
+    </path>
+
+    {/* Arrowhead */}
+    <path
+      d="M145 110 L160 120 L145 130"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="4"
+      strokeDasharray="100"
+      strokeDashoffset="100"
+    >
+      <animate
+        attributeName="stroke-dashoffset"
+        from="100"
+        to="0"
+        dur="1s"
+        begin="1.8s"
+        fill="freeze"
+      />
+    </path>
+  </svg>
+</div>
+
+
 
                   {/* Profile section */}
                   <div className="flex items-center gap-4">

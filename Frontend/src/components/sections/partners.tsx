@@ -22,7 +22,7 @@ const partners = [
 
 export default function Partners() {
   return (
-    <section id="partners" className="py-20 md:py-28 bg-primary/5">
+    <section id="partners" className="py-6 bg-primary/5">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Heading */}

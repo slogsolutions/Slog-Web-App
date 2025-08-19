@@ -30,13 +30,14 @@ const stats = [
 export default function WhyChooseUs() {
   return (
     <div className='bg-white'>
-      {/* Heading */}
+      
       <div className="text-center mb-12 ">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 pt-2">
               Why Choose Us?
             </h2>
         </div>
-      <section id="why-us" className="py-20 md:py-28 bg-gray-200">
+      <section id="why-us" className="pt-10 pb-12 md:pt-14 md:pb-16 bg-gray-200">
+
         <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           
           
