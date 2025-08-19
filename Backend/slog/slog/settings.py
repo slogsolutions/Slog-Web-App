@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ov#-8q#qi45oiq!8bumx40$j_hc1538q%g9@kbigytisr#r2v_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://slog-web-app.vercel.app/','https://slog-web-app.onrender.com']
 
 
 # Application definition
@@ -135,3 +135,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CORS_ALLOWED_ORIGINS = [
+    "https://slog-web-app.vercel.app/",
+]
