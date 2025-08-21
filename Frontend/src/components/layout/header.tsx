@@ -112,7 +112,7 @@ const services = [
 ];
 
 const resourcesItems = [
-  { href: "#apply", label: "Apply" },
+  { href: "/courses", label: "Apply" },
   { href: "#verify-certificates", label: "Verify Certificates" },
   { href: "#faq", label: "FAQ" },
 ];

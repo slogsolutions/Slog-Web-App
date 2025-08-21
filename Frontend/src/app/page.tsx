@@ -7,6 +7,8 @@ import Partners from '@/components/sections/partners';
 import About from '@/components/sections/about';
 import Testimonials from '@/components/sections/testimonials';
 import AiSuggester from '@/components/sections/ai-suggester';
+import Purpose from '@/components/sections/purpose';
+import PurposeSection from '@/components/sections/purpose';
 
 export default function Home() {
   return (
@@ -14,11 +16,12 @@ export default function Home() {
       {/* <Header /> */}
       <main className="bg-white">
         <Hero />
-        <Courses />
+        {/* <Courses /> */}
         {/* <AiSuggester /> */}
-        <WhyChooseUs />
+        {/* <WhyChooseUs /> */}
         <Partners />
-        <About />
+        <PurposeSection />
+        {/* <About /> */}
         <Testimonials />
       </main>
       {/* <Footer /> */}

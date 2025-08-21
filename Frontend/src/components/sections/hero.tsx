@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Typewriter } from "react-simple-typewriter";
 import updateslide2 from "../../assets/updateslide2.1.png";
-import slide1 from "../../assets/slide1.jpeg"
-import slide3 from "../../assets/slide3.jpg";
+import slide1 from "../../assets/slide1.jpeg";
+import slide3 from "../../assets/slide3.jpeg";
 import slide11 from "../../assets/slide11.png";
 import updateslide3 from "../../assets/updateslide3.png";
 import student_slide from "../../assets/slide10.png";
@@ -18,35 +19,20 @@ const heroSlides = [
     description:
       "We specialize in delivering end-to-end technology solutions, from custom software development to advanced lab setup and innovative product development. Our expertise ensures reliable, scalable, and cutting-edge services tailored to your needs.",
   },
-  // {
-  //   image: slide11,
-  //   dataAiHint: "modern classroom technology",
-  //   superTitle: "100+ Courses",
-  //   description:
-  //     "SLOG offers advanced Summer Training and Internship programs in Dehradun, integrating practical project-based modules, a 100% Job Guarantee, and structured placement assistance to bridge the gap between education and industry.",
-  // },
   {
     image: slide3,
     dataAiHint: "modern classroom technology",
-    superTitle: "100+ Courses",
+    superTitle: "Corporate and Government Trainings",
     description:
       "SLOG offers advanced Summer Training and Internship programs in Dehradun, integrating practical project-based modules, a 100% Job Guarantee, and structured placement assistance to bridge the gap between education and industry.",
   },
   {
-    image: slide11,
-    dataAiHint: "person working laptop",
-    superTitle: "Flexible Learning",
-    title: "Study at Your Own Pace",
-    description:
-      "With our online platform, you can access course materials and learn from anywhere, at any time that fits your schedule.",
-  },
-  {
     image: updateslide3,
-    dataAiHint: "smiling face",
-    superTitle: "Try Our Latest Products",
-    title: "Now",
+    dataAiHint: "OutBound Trainings",
+    superTitle: "Outbound Trainings",
+    title: "Enhancing Skills Beyond the Workplace",
     description:
-      "A wonderful category of top quality gadgets at an affordable price. Be the first to get the deal. First time customers will get 10% on their purhase.",
+      "Our outbound training programs are designed to build leadership, teamwork, problem-solving, and decision-making skills through experiential learning",
   },
   {
     image: updateslide2,
@@ -58,11 +44,11 @@ const heroSlides = [
   },
   {
     image: student_slide,
-    dataAiHint: "students collaborating computer",
-    superTitle: "Expert Mentors",
-    title: "Learn from Industry Leaders",
+    dataAiHint: "smiling face",
+    superTitle: "Student Training",
+    title: "Empowering the Next Generation",
     description:
-      "Our instructors are experienced professionals passionate about sharing their knowledge and helping you succeed in your career.",
+      "Our student training programs are designed to bridge the gap between academics and industry. Through hands-on workshops, real-world projects, and mentorship, we equip students with practical skills, technical expertise, and professional confidence to excel in their future careers.",
   },
 ];
 
@@ -102,52 +88,69 @@ export default function Hero() {
                     {slide.superTitle}
                   </div>
 
-                  {/* Title / Typewriter effect on first slide */}
+                  {/* Title / Typewriter effect */}
                   {index === 0 ? (
-  <h2 className="text-4xl md:text-5xl font-bold mb-6">
-    <Typewriter
-      words={[
-        "Software Development",
-        "Lab Setup",
-        "Product Development",
-      ]}
-      loop={0}
-      cursor
-      cursorStyle="|"
-      typeSpeed={50}
-      deleteSpeed={30}
-      delaySpeed={1500}
-    />
-  </h2>
-) : index === 1 ? (
-  <h2 className="text-4xl md:text-5xl font-bold mb-6">
-    <Typewriter
-      words={[
-        "Software Development",
-        "Placement Support System",
-        "Get 250+ Online/Offline Courses",
-        "Industry Level Training Curriculum",
-      ]}
-      loop={0}
-      cursor
-      cursorStyle="|"
-      typeSpeed={50}
-      deleteSpeed={30}
-      delaySpeed={1500}
-    />
-  </h2>
-) : (
-  <h2 className="text-4xl md:text-5xl font-bold mb-6">
-    {slide.title}
-  </h2>
-)}
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                      <Typewriter
+                        words={[
+                          "Software Development",
+                          "Lab Setup",
+                          "Product Development",
+                        ]}
+                        loop={0}
+                        cursor
+                        cursorStyle="|"
+                        typeSpeed={50}
+                        deleteSpeed={30}
+                        delaySpeed={1500}
+                      />
+                    </h2>
+                  ) : index === 1 ? (
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                      <Typewriter
+                        words={[
+                          "Advanced IT & Digital Transformation",
+                          "Get 250+ Online/Offline Courses",
+                          "Industry-Oriented Training Curriculum",
+                          "Cutting-Edge Technology Training",
+                          "Cybersecurity & Data Protection Programs",
+                        ]}
+                        loop={0}
+                        cursor
+                        cursorStyle="."
+                        typeSpeed={50}
+                        deleteSpeed={30}
+                        delaySpeed={1500}
+                      />
+                    </h2>
+                  ) : (
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                      {slide.title}
+                    </h2>
+                  )}
 
+                  <p className="text-2xl mt-2 leading-10 text-justify">
+                    {slide.description}
+                  </p>
 
-                  <p className="text-2xl mt-2 leading-10">{slide.description}</p>
-
-                  <Button size="lg" className="mt-8 px-8 py-6 text-lg rounded-lg">
-                    KNOW MORE
-                  </Button>
+                  {/* Conditional Button */}
+                  {index === 1 || index === 3 || index === 4 ? (
+                    <Link href="/courses">
+                      <Button
+                        size="lg"
+                        className="mt-8 px-8 py-6 text-lg rounded-lg"
+                      >
+                        Explore Now
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      size="lg"
+                      className="mt-8 px-8 py-6 text-lg rounded-lg"
+                    >
+                      Know More
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
