@@ -104,33 +104,44 @@ export default function Hero() {
 
                   {/* Title / Typewriter effect on first slide */}
                   {index === 0 ? (
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                      <Typewriter
-                        // words={[
-                        //   "Software Development",
-                        //   "Placement Support System",
-                        //   "Get 250+ Online/Offline Courses",
-                        //   "Industry Level Training Curriculum",
-                        // ]}
+  <h2 className="text-4xl md:text-5xl font-bold mb-6">
+    <Typewriter
+      words={[
+        "Software Development",
+        "Lab Setup",
+        "Product Development",
+      ]}
+      loop={0}
+      cursor
+      cursorStyle="|"
+      typeSpeed={50}
+      deleteSpeed={30}
+      delaySpeed={1500}
+    />
+  </h2>
+) : index === 1 ? (
+  <h2 className="text-4xl md:text-5xl font-bold mb-6">
+    <Typewriter
+      words={[
+        "Software Development",
+        "Placement Support System",
+        "Get 250+ Online/Offline Courses",
+        "Industry Level Training Curriculum",
+      ]}
+      loop={0}
+      cursor
+      cursorStyle="|"
+      typeSpeed={50}
+      deleteSpeed={30}
+      delaySpeed={1500}
+    />
+  </h2>
+) : (
+  <h2 className="text-4xl md:text-5xl font-bold mb-6">
+    {slide.title}
+  </h2>
+)}
 
-                        words={[
-                            "Software Development",
-                            "Lab Setup",
-                            "Product Development",
-                        ]}
-                        loop={0}
-                        cursor
-                        cursorStyle="|"
-                        typeSpeed={50}
-                        deleteSpeed={30}
-                        delaySpeed={1500}
-                      />
-                    </h2>
-                  ) : (
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                      {slide.title}
-                    </h2>
-                  )}
 
                   <p className="text-2xl mt-2 leading-10">{slide.description}</p>
 

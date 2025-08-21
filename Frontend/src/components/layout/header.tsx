@@ -158,7 +158,7 @@ export default function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-white/80 backdrop-blur-sm shadow-md" : "bg-transparent"
+        isScrolled ? "bg-black/50  backdrop-blur-sm shadow-md" : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -184,7 +184,7 @@ export default function Header() {
                   onMouseEnter={() => setIsDropdownOpen(true)}
                   onMouseLeave={() => setIsDropdownOpen(false)}
                 >
-                  <button className="text-sm font-bold text-black hover:text-cyan-600 flex items-center py-2">
+                  <button className="text-sm font-bold text-white hover:text-cyan-600 flex items-center py-2">
                     {item.label}
                     <svg
                       className="ml-1 h-4 w-4"
@@ -299,7 +299,7 @@ export default function Header() {
                   onMouseEnter={() => setIsResourcesDropdownOpen(true)}
                   onMouseLeave={() => setIsResourcesDropdownOpen(false)}
                 >
-                  <button className="text-sm font-bold text-black hover:text-cyan-600 flex items-center py-2">
+                  <button className="text-sm font-bold text-white hover:text-cyan-600 flex items-center py-2">
                     {item.label}
                     <svg
                       className="ml-1 h-4 w-4"
@@ -346,7 +346,7 @@ export default function Header() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-sm font-bold text-black hover:text-cyan-600 py-2"
+                  className="text-sm font-bold text-white hover:text-cyan-600 py-2"
                 >
                   {item.label}
                 </Link>
