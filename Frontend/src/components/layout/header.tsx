@@ -35,6 +35,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import EnquiryForm from "../EnquiryForm";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -48,6 +49,7 @@ const navItems = [
 const services = [
   {
     name: "Development",
+    path: "/development",
     subOptions: [
       {
         name: "Software Development",
@@ -68,18 +70,21 @@ const services = [
   },
   {
     name: "Corporate & Government Training",
+    path: "/training",
     images: [ct1.src, ct2.src, ct3.src, ct4.src],
     description:
       "Professional training programs for corporate and government sectors.",
   },
   {
     name: "Outbound Training Program",
+    path: "/outbound",
     images: [out1.src, out2.src, out3.src, out4.src],
     description:
       "Outdoor experiential learning and team-building programs.",
   },
   {
     name: "Ministry of Defence",
+    path: "/defence",
     subOptions: [
       {
         name: "Training",
@@ -100,6 +105,7 @@ const services = [
   },
   {
     name: "Student Training",
+    path: "/courses",
     images: [
       studtraining1.src,
       studtraining2.src,
@@ -112,7 +118,7 @@ const services = [
 ];
 
 const resourcesItems = [
-  { href: "/courses", label: "Apply" },
+  { href: "#joinus", label: "Join Us" },
   { href: "#verify-certificates", label: "Verify Certificates" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -214,52 +220,47 @@ export default function Header() {
                       onMouseLeave={() => setIsDropdownOpen(false)}
                     >
                       {/* Services list */}
-                      <div className="w-1/4 p-4 bg-gray-800">
-                        <div className="bg-white text-black p-3 shadow-md w-full">
-                          {services.map((service) => (
-                            <div
-                              key={service.name}
-                              className={`p-3 cursor-pointer font-semibold transition-all duration-300 hover:bg-gray-200/70 
-                                ${activeMain === service.name ? "bg-gray-100" : ""}`}
-                              onClick={() => {
-                                setActiveMain(service.name);
-                                setSelectedService(service);
-                              }}
-                            >
-                              {service.name}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
+<div className="w-1/4 p-4 bg-gray-800">
+  <div className="bg-white text-black p-3 shadow-md w-full">
+    {services.map((service) => (
+      <div
+        key={service.name}
+        className={`p-3 cursor-pointer font-semibold transition-all duration-300 hover:bg-gray-200/70 
+          ${activeMain === service.name ? "bg-gray-100" : ""}`}
+        onMouseEnter={() => {
+          setActiveMain(service.name);
+          setSelectedService(service);
+        }}
+      >
+        {service.name}
+      </div>
+    ))}
+  </div>
+</div>
 
-                      {/* Service details */}
-                      <div className="w-1/4 p-6 flex flex-col text-left">
-                        <h3 className="text-2xl font-bold">
-                          {selectedService.name}
-                        </h3>
-                        <p className="mb-4 text-gray-300 text-sm">
-                          {selectedService.description}
-                        </p>
+{/* Service details */}
+<div className="w-1/4 p-6 flex flex-col text-left">
+  <h3 className="text-2xl font-bold">{selectedService.name}</h3>
+  <p className="mb-4 text-gray-300 text-sm">{selectedService.description}</p>
 
-                        {selectedService.subOptions && (
-                          <div className="space-y-3">
-                            {selectedService.subOptions.map((sub) => (
-                              <div key={sub.name}>
-                                <h4 className="text-lg font-semibold">
-                                  {sub.name}
-                                </h4>
-                                <p className="text-gray-400 text-xs">
-                                  {sub.description}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
-                        )}
+  {selectedService.subOptions && (
+    <div className="space-y-3">
+      {selectedService.subOptions.map((sub) => (
+        <div key={sub.name}>
+          <h4 className="text-lg font-semibold">{sub.name}</h4>
+          <p className="text-gray-400 text-xs">{sub.description}</p>
+        </div>
+      ))}
+    </div>
+  )}
 
-                        <Button className="mt-1 bg-cyan-500 text-white hover:bg-cyan-600 rounded-lg w-fit text-sm py-2 px-4">
-                          Enquire Now
-                        </Button>
-                      </div>
+  {/* Navigate with Next.js Link */}
+  <Link href={selectedService.path || "/services"}>
+    <Button className="mt-1 bg-cyan-500 text-white hover:bg-cyan-600 rounded-lg w-fit text-sm py-2 px-4">
+      Explore Now
+    </Button>
+  </Link>
+</div>
 
                       {/* Images */}
                       <div className="w-2/4 mt-6 mr-6">
@@ -409,9 +410,14 @@ export default function Header() {
                   <Button variant="outline" className="rounded-full w-full">
                     Login / Sign Up
                   </Button>
-                  <Button className="rounded-full w-full bg-cyan-500 hover:bg-cyan-600 text-white">
-                    Enquiry
-                  </Button>
+                  <EnquiryForm
+                      triggerButton={
+                        <Button className="rounded-full w-full bg-cyan-500 hover:bg-cyan-600 text-white">
+                          Enquiry
+                        </Button>
+                      }
+                  />
+
                 </div>
               </SheetContent>
             </Sheet>

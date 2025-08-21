@@ -18,6 +18,8 @@ const heroSlides = [
     superTitle: "Development",
     description:
       "We specialize in delivering end-to-end technology solutions, from custom software development to advanced lab setup and innovative product development. Our expertise ensures reliable, scalable, and cutting-edge services tailored to your needs.",
+    route: "/development",
+    buttonText: "Know More",
   },
   {
     image: slide3,
@@ -25,6 +27,8 @@ const heroSlides = [
     superTitle: "Corporate and Government Trainings",
     description:
       "SLOG offers advanced Summer Training and Internship programs in Dehradun, integrating practical project-based modules, a 100% Job Guarantee, and structured placement assistance to bridge the gap between education and industry.",
+    route: "/training",
+    buttonText: "Explore",
   },
   {
     image: updateslide3,
@@ -33,6 +37,8 @@ const heroSlides = [
     title: "Enhancing Skills Beyond the Workplace",
     description:
       "Our outbound training programs are designed to build leadership, teamwork, problem-solving, and decision-making skills through experiential learning",
+    route: "/outbound",
+    buttonText: "Know More",
   },
   {
     image: updateslide2,
@@ -41,6 +47,8 @@ const heroSlides = [
     title: "Learn from Industry Leaders",
     description:
       "Our instructors are experienced professionals passionate about sharing their knowledge and helping you succeed in your career.",
+    route: "/defence",
+    buttonText: "Explore",
   },
   {
     image: student_slide,
@@ -49,6 +57,8 @@ const heroSlides = [
     title: "Empowering the Next Generation",
     description:
       "Our student training programs are designed to bridge the gap between academics and industry. Through hands-on workshops, real-world projects, and mentorship, we equip students with practical skills, technical expertise, and professional confidence to excel in their future careers.",
+    route: "/courses",
+    buttonText: "Explore",
   },
 ];
 
@@ -133,24 +143,14 @@ export default function Hero() {
                     {slide.description}
                   </p>
 
-                  {/* Conditional Button */}
-                  {index === 1 || index === 3 || index === 4 ? (
-                    <Link href="/courses">
-                      <Button
-                        size="lg"
-                        className="mt-8 px-8 py-6 text-lg rounded-lg"
-                      >
-                        Explore Now
-                      </Button>
-                    </Link>
-                  ) : (
-                    <Button
-                      size="lg"
-                      className="mt-8 px-8 py-6 text-lg rounded-lg"
-                    >
-                      Know More
-                    </Button>
-                  )}
+                  <Link href={slide.route}>
+  <Button
+    size="lg"
+    className="mt-8 px-8 py-6 text-lg rounded-lg"
+  >
+    {slide.buttonText}
+  </Button>
+</Link>
                 </div>
               </div>
             </div>
