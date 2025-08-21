@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import "./mentor.css"; // <--- Make sure to import the CSS you just created
 
 interface Mentor {
   name: string;
@@ -16,18 +17,18 @@ export default function MentorsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://slog-web-app.onrender.com/api/mentors/")
-      .then(res => res.json())
-      .then(data => {
-        setMentors(data);
-        setLoading(false);
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    fetch(`${API_URL}/api/mentors/`)
+      .then((res) => res.json())
+      .then(data => {setMentors(data);
+      setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((err) => console.error("Fetch error:", err));
   }, []);
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-    slides: { 
-      perView: 1, 
+    slides: {
+      perView: 1,
       spacing: 24,
       origin: "center"
     },
@@ -93,26 +94,28 @@ export default function MentorsPage() {
           <div ref={sliderRef} className="keen-slider pb-16">
             {mentors.map((mentor, index) => (
               <div key={index} className="keen-slider__slide min-w-[280px] sm:min-w-[320px] opacity-0 transition-opacity duration-500">
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-stone-100 hover:shadow-2xl transition-all duration-500 h-full flex flex-col group-hover:scale-[0.97] group-hover:opacity-90 hover:!scale-100 hover:!opacity-100">
-                  <div className="relative w-full h-80 overflow-hidden">
-                    <Image
-                      src={mentor.image}
-                      alt={mentor.name}
-                      fill
-                      className="object-cover transition-transform duration-700 hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      priority={index < 4}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-stone-900/10 to-transparent"></div>
-                    <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-stone-900/70 to-transparent"></div>
-                    {/* <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
-                      <span className="text-xs font-semibold text-stone-700">#{index + 1}</span>
-                    </div> */}
-                  </div>
-                  <div className="p-6 text-center flex-grow flex flex-col">
-                    <h2 className="text-2xl font-bold text-stone-800 mb-1 transition-colors duration-300">{mentor.name}</h2>
-                    <p className="text-stone-600 mt-2 text-sm font-medium">{mentor.designation}</p>
-                    
+                <div className="flip-card perspective">
+                  <div className="flip-card-inner">
+                    {/* Front Face */}
+                    <div className="flip-card-front bg-white">
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={mentor.image}
+                          alt={mentor.name}
+                          fill
+                          className="object-cover w-full h-full"
+                          priority={index < 4}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/50 via-stone-900/10 to-transparent"></div>
+                      </div>
+                    </div>
+                    {/* Back Face */}
+                    <div className="flip-card-back">
+                      <div className="w-full h-full flex flex-col justify-center items-center p-6">
+                        <h2 className="text-2xl font-bold text-stone-800 mb-1">{mentor.name}</h2>
+                        <p className="text-stone-700 text-base font-medium">{mentor.designation}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

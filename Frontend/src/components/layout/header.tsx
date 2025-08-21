@@ -46,7 +46,7 @@ const navItems = [
 ];
 
 const services = [
-   {
+  {
     name: "Development",
     subOptions: [
       {
@@ -69,14 +69,15 @@ const services = [
   {
     name: "Corporate & Government Training",
     images: [ct1.src, ct2.src, ct3.src, ct4.src],
-    description: "Professional training programs for corporate and government sectors.",
+    description:
+      "Professional training programs for corporate and government sectors.",
   },
   {
     name: "Outbound Training Program",
     images: [out1.src, out2.src, out3.src, out4.src],
-    description: "Outdoor experiential learning and team-building programs.",
+    description:
+      "Outdoor experiential learning and team-building programs.",
   },
- 
   {
     name: "Ministry of Defence",
     subOptions: [
@@ -97,11 +98,16 @@ const services = [
       },
     ],
   },
-  
   {
     name: "Student Training",
-    images: [studtraining1.src, studtraining2.src, studtraining3.src, studtraining4.src],
-    description: "Special programs for students to enhance skills and knowledge.",
+    images: [
+      studtraining1.src,
+      studtraining2.src,
+      studtraining3.src,
+      studtraining4.src,
+    ],
+    description:
+      "Special programs for students to enhance skills and knowledge.",
   },
 ];
 
@@ -118,13 +124,15 @@ export default function Header() {
   const [activeMain, setActiveMain] = useState(services[0].name);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isResourcesDropdownOpen, setIsResourcesDropdownOpen] = useState(false);
-  const [displayImages, setDisplayImages] = useState(services[0].images || []);
+  const [displayImages, setDisplayImages] = useState(
+    services[0].images || []
+  );
 
   useEffect(() => {
-    const allImages = [];
+    const allImages: string[] = [];
     if (selectedService.images) allImages.push(...selectedService.images);
     if (selectedService.subOptions) {
-      selectedService.subOptions.forEach(option => {
+      selectedService.subOptions.forEach((option) => {
         if (option.images) allImages.push(...option.images);
       });
     }
@@ -134,7 +142,7 @@ export default function Header() {
   useEffect(() => {
     if (displayImages.length > 1) {
       const interval = setInterval(() => {
-        setDisplayImages(prev => [...prev.slice(1), prev[0]]);
+        setDisplayImages((prev) => [...prev.slice(1), prev[0]]);
       }, 4000);
       return () => clearInterval(interval);
     }
@@ -147,395 +155,216 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled ? "bg-white/80 backdrop-blur-sm shadow-md" : "bg-transparent"
-    )}>
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        isScrolled ? "bg-white/80 backdrop-blur-sm shadow-md" : "bg-transparent"
+      )}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
+          {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <Image src={logo} alt="Slog Logo" width={100} height={57} priority />
+            <Image
+              src={logo}
+              alt="Slog Logo"
+              width={100}
+              height={57}
+              priority
+            />
           </Link>
 
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex md:items-center md:space-x-8">
+            {navItems.map((item) =>
+              item.label === "Services" ? (
+                <div
+                  className="relative group"
+                  key={item.label}
+                  onMouseEnter={() => setIsDropdownOpen(true)}
+                  onMouseLeave={() => setIsDropdownOpen(false)}
+                >
+                  <button className="text-sm font-bold text-black hover:text-cyan-600 flex items-center py-2">
+                    {item.label}
+                    <svg
+                      className="ml-1 h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 25 25"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
 
-
-
-
-
-
-
-
- 
-
-{/* <nav className="hidden md:flex md:items-center md:space-x-8">
-  {navItems.map((item) =>
-    item.label === "Services" ? (
-      <div
-        className="relative group"
-        key={item.label}
-        onMouseEnter={() => setIsDropdownOpen(true)}
-        onMouseLeave={() => setIsDropdownOpen(false)}
-      >
-        
-        <button className="text-sm font-bold text-black hover:text-black flex items-center py-2">
-          {item.label}
-          <svg
-            className="ml-1 h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 25 25"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
-
-      
-        <div
-          className={`absolute left-0 pt-2 w-[850px] transition-all duration-200 ${
-            isDropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
-          }`}
-        >
-          <div
-            className="flex bg-gray-900 text-white rounded-xl shadow-lg border border-gray-800 overflow-hidden z-50"
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
-          >
-          
-            <div className="w-1/4 p-4 bg-gray-800 overflow-y-auto max-h-[400px]">
-              <div className="bg-white text-black p-3 shadow-md w-full">
-                {services.map((service) => (
+                  {/* Dropdown */}
                   <div
-                    key={service.name}
-                    className={`p-3 cursor-pointer font-semibold transition-all duration-300
-                      hover:bg-gray-200/70 backdrop-blur-sm 
-                      ${activeMain === service.name ? "bg-gray-100" : ""}`}
-                    onClick={() => {
-                      setActiveMain(service.name);
-                      setSelectedService(service);
-                    }}
+                    className={`absolute left-0 pt-2 w-[850px] transition-all duration-200 ${
+                      isDropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                    }`}
                   >
-                    {service.name}
-                  </div>
-                ))}
-              </div>
-            </div>
+                    <div
+                      className="flex bg-gray-900 text-white rounded-xl shadow-lg border border-gray-800 overflow-hidden z-50"
+                      onMouseEnter={() => setIsDropdownOpen(true)}
+                      onMouseLeave={() => setIsDropdownOpen(false)}
+                    >
+                      {/* Services list */}
+                      <div className="w-1/4 p-4 bg-gray-800">
+                        <div className="bg-white text-black p-3 shadow-md w-full">
+                          {services.map((service) => (
+                            <div
+                              key={service.name}
+                              className={`p-3 cursor-pointer font-semibold transition-all duration-300 hover:bg-gray-200/70 
+                                ${activeMain === service.name ? "bg-gray-100" : ""}`}
+                              onClick={() => {
+                                setActiveMain(service.name);
+                                setSelectedService(service);
+                              }}
+                            >
+                              {service.name}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
 
-           
-            <div className="w-1/4 p-6 flex flex-col text-left overflow-y-auto max-h-[400px]">
-              <h3 className="text-2xl font-bold">{selectedService.name}</h3>
-              <p className="mb-4 text-gray-300 text-sm">
-                {selectedService.description}
-              </p>
+                      {/* Service details */}
+                      <div className="w-1/4 p-6 flex flex-col text-left">
+                        <h3 className="text-2xl font-bold">
+                          {selectedService.name}
+                        </h3>
+                        <p className="mb-4 text-gray-300 text-sm">
+                          {selectedService.description}
+                        </p>
 
-              {selectedService.subOptions && (
-                <div className="space-y-3">
-                  {selectedService.subOptions.map((sub) => (
-                    <div key={sub.name}>
-                      <h4 className="text-lg font-semibold">{sub.name}</h4>
-                      <p className="text-gray-400 text-xs">{sub.description}</p>
+                        {selectedService.subOptions && (
+                          <div className="space-y-3">
+                            {selectedService.subOptions.map((sub) => (
+                              <div key={sub.name}>
+                                <h4 className="text-lg font-semibold">
+                                  {sub.name}
+                                </h4>
+                                <p className="text-gray-400 text-xs">
+                                  {sub.description}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        <Button className="mt-1 bg-cyan-500 text-white hover:bg-cyan-600 rounded-lg w-fit text-sm py-2 px-4">
+                          Enquire Now
+                        </Button>
+                      </div>
+
+                      {/* Images */}
+                      <div className="w-2/4 mt-6 mr-6">
+                        {displayImages.length > 0 && (
+                          <div className="grid grid-cols-1 gap-2 max-w-full">
+                            <img
+                              src={displayImages[0]}
+                              alt="Main preview"
+                              className="h-40 w-full object-cover rounded-lg transition-all duration-500"
+                            />
+                            <div className="grid grid-cols-2 gap-2">
+                              {displayImages[1] && (
+                                <img
+                                  src={displayImages[1]}
+                                  alt="Preview small 1"
+                                  className="h-30 w-full object-cover rounded-lg transition-all duration-500"
+                                />
+                              )}
+                              {displayImages[2] && (
+                                <img
+                                  src={displayImages[2]}
+                                  alt="Preview small 2"
+                                  className="h-30 w-full object-cover rounded-lg transition-all duration-500"
+                                />
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              )}
-
-              <Button className="mt-1 bg-gray-400 text-black hover:bg-gray-300 rounded-lg w-fit text-sm py-2 px-4">
-                Enquire Now
-              </Button>
-            </div>
-
-            
-            <div className="w-2/4 mt-6 max-h-[400px] mr-6">
-              {displayImages.length > 0 && (
-                <div className="grid grid-cols-1 gap-2 max-w-full">
-                  <img
-                    src={displayImages[0]}
-                    alt="Main preview"
-                    className="h-40 w-full object-cover rounded-lg transition-all duration-500"
-                  />
-                  <div className="grid grid-cols-2 gap-2">
-                    {displayImages[1] && (
-                      <img
-                        src={displayImages[1]}
-                        alt="Preview small 1"
-                        className="h-30 w-full object-cover rounded-lg transition-all duration-500"
-                      />
-                    )}
-                    {displayImages[2] && (
-                      <img
-                        src={displayImages[2]}
-                        alt="Preview small 2"
-                        className="h-30 w-full object-cover rounded-lg transition-all duration-500"
-                      />
-                    )}
                   </div>
                 </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    ) : item.label === "Resources" ? (
-      <div
-        className="relative group"
-        key={item.label}
-        onMouseEnter={() => setIsResourcesDropdownOpen(true)}
-        onMouseLeave={() => setIsResourcesDropdownOpen(false)}
-      >
-        <button className="text-sm font-bold text-black hover:text-black flex items-center py-2">
-          {item.label}
-          <svg
-            className="ml-1 h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
+              ) : item.label === "Resources" ? (
+                <div
+                  className="relative group"
+                  key={item.label}
+                  onMouseEnter={() => setIsResourcesDropdownOpen(true)}
+                  onMouseLeave={() => setIsResourcesDropdownOpen(false)}
+                >
+                  <button className="text-sm font-bold text-black hover:text-cyan-600 flex items-center py-2">
+                    {item.label}
+                    <svg
+                      className="ml-1 h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
 
-        
-        <div
-          className={`absolute left-1/2 transform -translate-x-1/2 pt-3 transition-all duration-200 ${
-            isResourcesDropdownOpen
-              ? "opacity-100 visible"
-              : "opacity-0 invisible"
-          }`}
-        >
-          <div
-            className="bg-gray-900 text-white rounded-xl shadow-lg border border-gray-800 overflow-hidden z-50"
-            onMouseEnter={() => setIsResourcesDropdownOpen(true)}
-            onMouseLeave={() => setIsResourcesDropdownOpen(false)}
-          >
-            {resourcesItems.map((res) => (
-              <Link
-                key={res.label}
-                href={res.href}
-                className="block px-4 py-2 hover:bg-gray-100 text-sm hover:text-black"
-              >
-                {res.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    ) : (
-      <Link
-        key={item.label}
-        href={item.href}
-        className="text-sm font-bold text-black hover:text-black py-2"
-      >
-        {item.label}
-      </Link>
-    )
-  )}
-</nav> */}
-<nav className="hidden md:flex md:items-center md:space-x-8">
-  {navItems.map((item) =>
-    item.label === "Services" ? (
-      <div
-        className="relative group"
-        key={item.label}
-        onMouseEnter={() => setIsDropdownOpen(true)}
-        onMouseLeave={() => setIsDropdownOpen(false)}
-      >
-        {/* Services button */}
-        <button className="text-sm font-bold text-black hover:text-black flex items-center py-2">
-          {item.label}
-          <svg
-            className="ml-1 h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 25 25"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
-
-        {/* Dropdown */}
-        <div
-          className={`absolute left-0 pt-2 w-[850px] transition-all duration-200 ${
-            isDropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
-          }`}
-        >
-          <div
-            className="flex bg-gray-900 text-white rounded-xl shadow-lg border border-gray-800 overflow-hidden z-50"
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
-          >
-            {/* Services list (NO SCROLLBAR) */}
-            <div className="w-1/4 p-4 bg-gray-800">
-              <div className="bg-white text-black p-3 shadow-md w-full">
-                {services.map((service) => (
+                  {/* Resources dropdown */}
                   <div
-                    key={service.name}
-                    className={`p-3 cursor-pointer font-semibold transition-all duration-300
-                      hover:bg-gray-200/70 backdrop-blur-sm 
-                      ${activeMain === service.name ? "bg-gray-100" : ""}`}
-                    onClick={() => {
-                      setActiveMain(service.name);
-                      setSelectedService(service);
-                    }}
+                    className={`absolute left-1/2 transform -translate-x-1/2 pt-3 transition-all duration-200 ${
+                      isResourcesDropdownOpen
+                        ? "opacity-100 visible"
+                        : "opacity-0 invisible"
+                    }`}
                   >
-                    {service.name}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Service details */}
-            <div className="w-1/4 p-6 flex flex-col text-left">
-              <h3 className="text-2xl font-bold">{selectedService.name}</h3>
-              <p className="mb-4 text-gray-300 text-sm">
-                {selectedService.description}
-              </p>
-
-              {selectedService.subOptions && (
-                <div className="space-y-3">
-                  {selectedService.subOptions.map((sub) => (
-                    <div key={sub.name}>
-                      <h4 className="text-lg font-semibold">{sub.name}</h4>
-                      <p className="text-gray-400 text-xs">{sub.description}</p>
+                    <div
+                      className="bg-gray-900 text-white rounded-xl shadow-lg border border-gray-800 overflow-hidden z-50"
+                      onMouseEnter={() => setIsResourcesDropdownOpen(true)}
+                      onMouseLeave={() => setIsResourcesDropdownOpen(false)}
+                    >
+                      {resourcesItems.map((res) => (
+                        <Link
+                          key={res.label}
+                          href={res.href}
+                          className="block px-4 py-2 hover:bg-gray-100 text-sm hover:text-black"
+                        >
+                          {res.label}
+                        </Link>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              )}
-
-              <Button className="mt-1 bg-gray-400 text-black hover:bg-gray-300 rounded-lg w-fit text-sm py-2 px-4">
-                Enquire Now
-              </Button>
-            </div>
-
-            {/* Service images */}
-            <div className="w-2/4 mt-6 mr-6">
-              {displayImages.length > 0 && (
-                <div className="grid grid-cols-1 gap-2 max-w-full">
-                  <img
-                    src={displayImages[0]}
-                    alt="Main preview"
-                    className="h-40 w-full object-cover rounded-lg transition-all duration-500"
-                  />
-                  <div className="grid grid-cols-2 gap-2">
-                    {displayImages[1] && (
-                      <img
-                        src={displayImages[1]}
-                        alt="Preview small 1"
-                        className="h-30 w-full object-cover rounded-lg transition-all duration-500"
-                      />
-                    )}
-                    {displayImages[2] && (
-                      <img
-                        src={displayImages[2]}
-                        alt="Preview small 2"
-                        className="h-30 w-full object-cover rounded-lg transition-all duration-500"
-                      />
-                    )}
                   </div>
                 </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    ) : item.label === "Resources" ? (
-      <div
-        className="relative group"
-        key={item.label}
-        onMouseEnter={() => setIsResourcesDropdownOpen(true)}
-        onMouseLeave={() => setIsResourcesDropdownOpen(false)}
-      >
-        {/* Resources button */}
-        <button className="text-sm font-bold text-black hover:text-black flex items-center py-2">
-          {item.label}
-          <svg
-            className="ml-1 h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
+              ) : (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-bold text-black hover:text-cyan-600 py-2"
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
+          </nav>
 
-        {/* Resources dropdown */}
-        <div
-          className={`absolute left-1/2 transform -translate-x-1/2 pt-3 transition-all duration-200 ${
-            isResourcesDropdownOpen
-              ? "opacity-100 visible"
-              : "opacity-0 invisible"
-          }`}
-        >
-          <div
-            className="bg-gray-900 text-white rounded-xl shadow-lg border border-gray-800 overflow-hidden z-50"
-            onMouseEnter={() => setIsResourcesDropdownOpen(true)}
-            onMouseLeave={() => setIsResourcesDropdownOpen(false)}
-          >
-            {resourcesItems.map((res) => (
-              <Link
-                key={res.label}
-                href={res.href}
-                className="block px-4 py-2 hover:bg-gray-100 text-sm hover:text-black"
-              >
-                {res.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    ) : (
-      <Link
-        key={item.label}
-        href={item.href}
-        className="text-sm font-bold text-black hover:text-black py-2"
-      >
-        {item.label}
-      </Link>
-    )
-  )}
-</nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
+          {/* Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Button variant="outline" className="rounded-full">
               Login / Sign Up
             </Button>
-            <Button className="rounded-full">Enquiry</Button>
+            <Button className="rounded-full bg-cyan-500 hover:bg-cyan-600 text-white">
+              Enquiry
+            </Button>
           </div>
 
+          {/* Mobile Menu */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -543,20 +372,35 @@ export default function Header() {
                   <Menu className="h-6 w-6 text-black" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-xs bg-gray-900 text-white p-6">
+              <SheetContent
+                side="right"
+                className="w-full max-w-xs bg-gray-900 text-white p-6"
+              >
                 <div className="flex justify-between items-center mb-8">
                   <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Image src={logo} alt="Slog Logo" width={120} height={45} />
+                    <Image
+                      src={logo}
+                      alt="Slog Logo"
+                      width={120}
+                      height={45}
+                    />
                   </Link>
-                  <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     <X className="h-6 w-6" />
                   </Button>
                 </div>
                 <nav className="flex flex-col space-y-4">
                   {navItems.map((item) => (
-                    <Link key={item.label} href={item.href}
+                    <Link
+                      key={item.label}
+                      href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-bold hover:text-primary">
+                      className="text-lg font-bold hover:text-cyan-400"
+                    >
                       {item.label}
                     </Link>
                   ))}
@@ -565,7 +409,9 @@ export default function Header() {
                   <Button variant="outline" className="rounded-full w-full">
                     Login / Sign Up
                   </Button>
-                  <Button className="rounded-full w-full">Enquiry</Button>
+                  <Button className="rounded-full w-full bg-cyan-500 hover:bg-cyan-600 text-white">
+                    Enquiry
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
