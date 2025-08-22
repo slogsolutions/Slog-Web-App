@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import EnquiryForm from "@/components/EnquiryForm";
 // Program data
 const programs = [
   {
@@ -163,9 +163,14 @@ export default function OutboundTraining() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              <button className="px-8 py-3 bg-teal-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-teal-600">
+              <EnquiryForm
+                      triggerButton={
+                        <button className="px-8 py-3 bg-teal-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-teal-600">
                 Plan Your Program
               </button>
+                      }
+                  />
+              
               {/* <button className="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:bg-opacity-10 transition-colors duration-300">
                 Download Brochure
               </button> */}
@@ -373,10 +378,14 @@ export default function OutboundTraining() {
                       </div> */}
                     {/* </div> */}
                   {/* </div> */}
-                  
-                  <button className="px-6 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-md hover:bg-teal-700 transition-colors duration-300">
+                  <EnquiryForm
+                      triggerButton={
+                        <button className="px-6 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-md hover:bg-teal-700 transition-colors duration-300">
                     Request a Proposal
                   </button>
+                      }
+                  />
+                  
                 </div>
                 
                 <div className="md:w-1/3">
@@ -501,9 +510,14 @@ export default function OutboundTraining() {
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="px-8 py-3 bg-white text-teal-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <EnquiryForm
+                      triggerButton={
+                        <button className="px-8 py-3 bg-white text-teal-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 Get Started
               </button>
+                      }
+                  />
+              
               {/* <button className="px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:bg-opacity-10 transition-colors duration-300">
                 Download Brochure
               </button> */}

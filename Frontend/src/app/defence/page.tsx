@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import EnquiryForm from "@/components/EnquiryForm";
 // Ministry of Defence services data
 const services = [
   {
@@ -168,9 +168,14 @@ export default function MinistryOfDefence() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              <button className="px-8 py-3 bg-teal-600 text-white font-semibold rounded shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-teal-700">
+              <EnquiryForm
+                                    triggerButton={
+                                      <button className="px-8 py-3 bg-teal-600 text-white font-semibold rounded shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:bg-teal-700">
                 Request Information
               </button>
+                                    }
+                                />
+              
               {/* <button className="px-8 py-3 border-2 border-gray-300 text-gray-300 font-semibold rounded hover:bg-gray-700 transition-colors duration-300">
                 Contact Security Desk
               </button> */}
@@ -388,13 +393,17 @@ export default function MinistryOfDefence() {
                       </div>
                     </div>
                   </div> */}
-                  
-                  <button className="px-6 py-3 bg-teal-600 text-white font-semibold rounded shadow-md hover:bg-teal-700 transition-colors duration-300 flex items-center">
+                  <EnquiryForm
+                      triggerButton={
+                        <button className="px-6 py-3 bg-teal-600 text-white font-semibold rounded shadow-md hover:bg-teal-700 transition-colors duration-300 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                     </svg>
                     Request Secure Briefing
                   </button>
+                      }
+                  />
+                  
                 </div>
                 
                 <div className="md:w-1/3">

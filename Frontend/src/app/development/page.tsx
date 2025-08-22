@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import EnquiryForm from "../../components/EnquiryForm";
 
 // Service data
 const services = [
@@ -121,9 +122,14 @@ export default function DevelopmentServices() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              <button className="px-8 py-3 bg-teal-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <EnquiryForm
+                      triggerButton={
+                        <button className="px-8 py-3 bg-teal-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 Get Started
               </button>
+                      }
+                  />
+              
               <button className="px-8 py-3 border-2 border-teal-600 text-teal-600 font-semibold rounded-full hover:bg-teal-50 transition-colors duration-300">
                 View Our Work
               </button>
@@ -249,10 +255,14 @@ export default function DevelopmentServices() {
                       </motion.li>
                     ))}
                   </ul>
-                  
-                  <button className="px-6 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-md hover:bg-teal-700 transition-colors duration-300">
+                  <EnquiryForm
+                      triggerButton={
+                        <button className="px-6 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-md hover:bg-teal-700 transition-colors duration-300">
                     Request a Quote
                   </button>
+                      }
+                  />
+                  
                 </div>
                 
                 <div className="md:w-1/3">

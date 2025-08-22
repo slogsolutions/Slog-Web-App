@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import EnquiryForm from "@/components/EnquiryForm";
 // Training program data
 const trainingPrograms = [
   {
@@ -181,9 +181,14 @@ export default function CorporateTraining() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <EnquiryForm
+                      triggerButton={
+                        <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 Request Information
               </button>
+                      }
+                  />
+              
               {/* <button className="px-8 py-3 border-2 border-blue-600 text-teal-600 font-semibold rounded-full hover:bg-blue-50 transition-colors duration-300">
                 Download Brochure
               </button> */}
