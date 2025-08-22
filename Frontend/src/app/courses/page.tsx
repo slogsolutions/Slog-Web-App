@@ -21,9 +21,11 @@ type Course = {
   duration: string;
   price: string;
   category: string;
+  description: string;
 };
 
 const categories = [
+  "All Courses",
   "Computer Science",
   "Civil Tools",
   "Mechanical Tools",
@@ -48,31 +50,34 @@ const courseColors = [
 export default function Courses() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All Courses");
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   useEffect(() => {
     const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
     fetch(`${API_URL}/api/courses/`)
       .then((res) => res.json())
-      .then((data) => setCourses(data))
+      .then((data) => {
+        setCourses(data);
+        setFilteredCourses(data);
+      })
       .catch((err) => console.error("Fetch error:", err));
   }, []);
 
   useEffect(() => {
-    if (selectedCategory) {
+    if (selectedCategory === "All Courses") {
+      setFilteredCourses(courses);
+    } else {
       setFilteredCourses(
         courses.filter((course) => course.category === selectedCategory)
       );
-    } else {
-      setFilteredCourses([]);
     }
   }, [selectedCategory, courses]);
 
   return (
     <section
       id="courses"
-      className="pt-6 relative w-full min-h-screen bg-gray-900"
+      className="pt-6 relative w-full min-h-screen bg-gradient-to-r from-teal-800 to-blue-900"
     >
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -101,45 +106,41 @@ export default function Courses() {
         </div>
 
         <div className="mb-16 flex flex-wrap justify-center gap-4">
-  {categories.map((category, index) => (
-    <Button
-      key={index}
-      variant={selectedCategory === category ? "default" : "outline"}
-      className={`rounded-full px-6 py-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg ${
-        selectedCategory === category
-          ? "bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-lg"
-          : "border-2 border-teal-200 bg-white text-teal-600 hover:bg-teal-50 hover:border-teal-300"
-      }`}
-      onClick={() =>
-        setSelectedCategory(selectedCategory === category ? null : category)
-      }
-    >
-      {category}
-    </Button>
-  ))}
-</div>
+          {categories.map((category, index) => (
+            <Button
+              key={index}
+              variant={selectedCategory === category ? "default" : "outline"}
+              className={`rounded-full px-6 py-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg ${
+                selectedCategory === category
+                  ? "bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-lg"
+                  : "border-2 border-teal-200 bg-white text-teal-600 hover:bg-teal-50 hover:border-teal-300"
+              }`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
 
         {/* Courses Grid */}
-        {selectedCategory && (
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            {filteredCourses.map((course, index) => (
-              <AnimatedCourseCard
-                key={course.id}
-                course={course}
-                index={index}
-                onClick={() => setSelectedCourse(course)}
-              />
-            ))}
-          </motion.div>
-        )}
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          {filteredCourses.map((course, index) => (
+            <AnimatedCourseCard
+              key={course.id}
+              course={course}
+              index={index}
+              onClick={() => setSelectedCourse(course)}
+            />
+          ))}
+        </motion.div>
 
         {/* No courses message */}
-        {selectedCategory && filteredCourses.length === 0 && (
+        {filteredCourses.length === 0 && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -173,7 +174,7 @@ export default function Courses() {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ type: "spring", damping: 20, stiffness: 300 }}
-                className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden relative"
+                className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden relative"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Close Button */}
@@ -186,73 +187,123 @@ export default function Courses() {
                   </svg>
                 </button>
 
-                {/* Course Image */}
-                <div className="h-48 w-full overflow-hidden relative">
-                  <img
-                    src={selectedCourse.image}
-                    alt={selectedCourse.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-900/70 to-transparent"></div>
-                  <div className="absolute bottom-4 left-6">
-                    <span className="bg-teal-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      {selectedCourse.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Course Info */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                    {selectedCourse.title}
-                  </h3>
-                  
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center">
-                      <div className="bg-teal-100 p-2 rounded-lg mr-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">Duration</p>
-                        <p className="font-medium text-gray-900">{selectedCourse.duration}</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center">
-                      <div className="bg-cyan-100 p-2 rounded-lg mr-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">Price</p>
-                        <p className="font-medium text-gray-900">{selectedCourse.price}</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center">
-                      <div className="bg-blue-100 p-2 rounded-lg mr-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">Category</p>
-                        <p className="font-medium text-gray-900">{selectedCourse.category}</p>
-                      </div>
+                <div className="flex flex-col md:flex-row">
+                  {/* Course Image */}
+                  <div className="md:w-2/5 h-64 md:h-auto overflow-hidden relative">
+                    <img
+                      src={selectedCourse.image}
+                      alt={selectedCourse.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-teal-900/70 to-transparent md:bg-gradient-to-r md:from-teal-900/70 md:to-transparent"></div>
+                    <div className="absolute bottom-4 left-6">
+                      <span className="bg-teal-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        {selectedCourse.category}
+                      </span>
                     </div>
                   </div>
 
-                  {/* Enquiry Button */}
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full py-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all"
-                  >
-                    Enquiry Now
-                  </motion.button>
+                  {/* Course Info */}
+                  <div className="md:w-3/5 p-6">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                      {selectedCourse.title}
+                    </h3>
+                    
+                    {/* Course Description */}
+                    <div className="mb-6">
+                      <div className="flex items-start mb-4">
+                        <div className="bg-teal-100 p-2 rounded-lg mr-3 flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500">Description</p>
+                          <p className="font-medium text-gray-900 mt-1">
+                            {selectedCourse.description || "Comprehensive course covering all aspects of this subject with hands-on projects and real-world applications."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* <div className="grid grid-cols-2 gap-4 mb-6">
+                      <div className="flex items-center">
+                        <div className="bg-cyan-100 p-2 rounded-lg mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500">Duration</p>
+                          <p className="font-medium text-gray-900">{selectedCourse.duration}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center">
+                        <div className="bg-blue-100 p-2 rounded-lg mr-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500">Price</p>
+                          <p className="font-medium text-gray-900">{selectedCourse.price}</p>
+                        </div>
+                      </div>
+                    </div> */}
+
+                    <div className="bg-teal-50 rounded-xl p-4 mb-6">
+                      <h4 className="font-semibold text-teal-800 mb-2">Learning Options:</h4>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="flex items-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                          </svg>
+                          <span className="text-sm text-teal-700">Online Classes</span>
+                        </div>
+                        <div className="flex items-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span className="text-sm text-teal-700">Offline Classes</span>
+                        </div>
+                        <div className="flex items-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          </svg>
+                          <span className="text-sm text-teal-700">Certification</span>
+                        </div>
+                        <div className="flex items-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                          </svg>
+                          <span className="text-sm text-teal-700">Customizable</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <motion.button
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex-1 py-3 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        Contact for Details
+                      </motion.button>
+                      {/* <motion.button
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex-1 py-3 border-2 border-teal-600 text-teal-600 font-bold rounded-xl hover:bg-teal-50 transition-all"
+                      >
+                        Customize This Course
+                      </motion.button> */}
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
@@ -324,6 +375,13 @@ const AnimatedCourseCard = ({
           <h3 className="text-xl font-bold text-white z-10 relative px-2">
             {course.title}
           </h3>
+          
+          {/* Category badge */}
+          <div className="absolute top-3 left-3">
+            <span className="bg-white/20 text-white text-xs font-semibold px-2 py-1 rounded-full backdrop-blur-sm">
+              {course.category}
+            </span>
+          </div>
           
           {/* Hover overlay */}
           <motion.div 
