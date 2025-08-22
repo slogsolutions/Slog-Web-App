@@ -38,16 +38,16 @@ export default function MentorsPage() {
   }
 
   return (
-    <section className="bg-gray-900 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="bg-gradient-to-r from-teal-800 to-blue-900 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
+        <div className="text-center mb-10">
           <span className="inline-block mb-4 text-sm font-semibold tracking-wider text-teal-600 uppercase">
             Expert Guidance
           </span>
           <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
             Meet Our <span className="text-teal-600">Mentors</span>
           </h1>
-          <p className="mt-6 max-w-2xl mx-auto text-lg text-stone-600 leading-relaxed">
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-white leading-relaxed">
             Learn from industry leaders and passionate educators dedicated to your success.
           </p>
           <div className="mt-8 flex justify-center">
