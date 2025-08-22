@@ -12,6 +12,7 @@ import {
 import { Button } from "../../components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import book from "../../assets/books.jpeg";
+import EnquiryForm from "@/components/EnquiryForm";
 
 type Course = {
   id: number;
@@ -284,8 +285,11 @@ export default function Courses() {
                     </div>
 
                     {/* Action Buttons */}
+                    
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <motion.button
+                      <EnquiryForm
+                                            triggerButton={
+                                              <motion.button
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
                         className="flex-1 py-3 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
@@ -295,6 +299,9 @@ export default function Courses() {
                         </svg>
                         Contact for Details
                       </motion.button>
+                                            }
+                                        />
+                      
                       {/* <motion.button
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
