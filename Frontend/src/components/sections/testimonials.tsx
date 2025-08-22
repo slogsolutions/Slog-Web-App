@@ -52,7 +52,7 @@ export default function TestimonialsSection() {
         <div className="relative bg-[#bfcfcf] rounded-3xl md:p-6 ">
           
 
-          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid lg:grid-cols-2 gap-3 lg:gap-4">
             {/* Left side - Heading and navigation */}
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight">WHAT OUR
