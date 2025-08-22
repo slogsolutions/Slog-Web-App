@@ -94,9 +94,9 @@ export default function DevelopmentServices() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gray-900">
+      <section className="relative py-20 overflow-hidden bg-gradient-to-r from-teal-800 to-blue-900">
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiMwMGFiYjEiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjIiLz48L2c+PC9zdmc+')]"></div>
         </div>
@@ -111,7 +111,7 @@ export default function DevelopmentServices() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Development <span className="text-teal-600">Services</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-white mb-10 max-w-2xl mx-auto">
               Transforming ideas into innovative digital solutions through cutting-edge technology and expert craftsmanship.
             </p>
             
@@ -172,12 +172,12 @@ export default function DevelopmentServices() {
                 <p className="text-gray-600 mb-4">
                   {service.subtitle}
                 </p>
-                <button className="text-teal-600 font-semibold flex items-center group-hover:underline">
+                {/* <button className="text-teal-600 font-semibold flex items-center group-hover:underline">
                   Learn more
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
-                </button>
+                </button> */}
               </motion.div>
             ))}
           </div>

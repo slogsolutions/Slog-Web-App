@@ -360,9 +360,15 @@ export default function Header() {
             <Button variant="outline" className="rounded-full">
               Login / Sign Up
             </Button>
+             <EnquiryForm
+                      triggerButton={
             <Button className="rounded-full bg-cyan-500 hover:bg-cyan-600 text-white">
               Enquiry
             </Button>
+             }
+                  />
+
+
           </div>
 
           {/* Mobile Menu */}

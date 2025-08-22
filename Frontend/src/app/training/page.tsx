@@ -154,9 +154,9 @@ export default function CorporateTraining() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-blue-50">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gray-900">
+      <section className="relative py-20 overflow-hidden bg-gradient-to-r from-teal-800 to-blue-900">
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiMwMDk2ODgiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjIiLz48L2c+PC9zdmc+')]"></div>
         </div>
@@ -171,7 +171,7 @@ export default function CorporateTraining() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Corporate & Government <span className="text-teal-600">Training</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-white mb-10 max-w-2xl mx-auto">
               Professional training programs designed to enhance capabilities, ensure compliance, and drive performance in corporate and government sectors.
             </p>
             
@@ -191,190 +191,6 @@ export default function CorporateTraining() {
           </motion.div>
         </div>
       </section>
-
-      {/* Training Programs Section
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our <span className="text-teal-600">Training Programs</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive, engaging, and results-driven training solutions for organizations of all sizes.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {trainingPrograms.map((program, index) => (
-              <motion.div
-                key={program.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group cursor-pointer"
-                onClick={() => setSelectedProgram(program)}
-              >
-                <div className="mb-6 flex justify-center">
-                  <div className="p-4 bg-blue-100 rounded-2xl text-teal-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                    {program.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors duration-300">
-                  {program.title}
-                </h3>
-                <p className="text-gray-600 mb-4 text-sm">
-                  {program.subtitle}
-                </p>
-                <div className="flex justify-between text-sm text-gray-500 mt-4">
-                  <span>{program.duration}</span>
-                  <span>{program.format}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* Program Details Section
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Program <span className="text-teal-600">Details</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Explore our comprehensive training offerings and how they can benefit your organization.
-            </p>
-          </motion.div>
-
-          <div className="flex flex-wrap mb-8 border-b border-gray-200 overflow-x-auto">
-            {trainingPrograms.map((program, index) => (
-              <button
-                key={program.id}
-                className={`px-6 py-3 font-semibold text-lg border-b-2 transition-colors duration-300 ${activeTab === index ? 'border-blue-600 text-teal-600' : 'border-transparent text-gray-500 hover:text-blue-500'}`}
-                onClick={() => setActiveTab(index)}
-              >
-                {program.title}
-              </button>
-            ))}
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white rounded-2xl shadow-lg p-8"
-            >
-              <div className="flex flex-col lg:flex-row gap-8">
-                <div className="lg:w-2/3">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {trainingPrograms[activeTab].title}
-                  </h3>
-                  <p className="text-gray-600 mb-6">
-                    {trainingPrograms[activeTab].description}
-                  </p>
-                  
-                  <h4 className="text-xl font-semibold text-gray-900 mb-4">Program Highlights:</h4>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
-                    {trainingPrograms[activeTab].features.map((feature, index) => (
-                      <motion.li 
-                        key={index}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="flex items-start"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-teal-600 mr-2 mt-1 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-gray-700">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                  
-                  <div className="bg-blue-50 rounded-xl p-6 mb-8">
-                    <h4 className="text-lg font-semibold text-blue-800 mb-3">Program Details</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <span className="font-medium text-blue-700">Duration:</span> {trainingPrograms[activeTab].duration}
-                      </div>
-                      <div>
-                        <span className="font-medium text-blue-700">Format:</span> {trainingPrograms[activeTab].format}
-                      </div>
-                      <div>
-                        <span className="font-medium text-blue-700">Participants:</span> Up to 25 per session
-                      </div>
-                      <div>
-                        <span className="font-medium text-blue-700">Materials:</span> Comprehensive workbook & resources
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="lg:w-1/3">
-                  <div className="bg-blue-50 rounded-xl p-6 border border-blue-100 sticky top-6">
-                    <h4 className="text-lg font-semibold text-blue-800 mb-4">Why Choose Our Training?</h4>
-                    <ul className="space-y-3">
-                      <li className="flex items-start">
-                        <div className="bg-blue-100 rounded-full p-2 mr-3">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-blue-700">Industry-expert facilitators</span>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="bg-blue-100 rounded-full p-2 mr-3">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-blue-700">Practical, real-world applications</span>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="bg-blue-100 rounded-full p-2 mr-3">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-blue-700">Customized to your organization</span>
-                      </li>
-                      <li className="flex items-start">
-                        <div className="bg-blue-100 rounded-full p-2 mr-3">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-blue-700">Ongoing support & resources</span>
-                      </li>
-                    </ul>
-                    
-                    <button className="w-full mt-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">
-                      Request a Proposal
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section> */}
 
       {/* Sectors We Serve */}
       <section className="py-20 bg-white">

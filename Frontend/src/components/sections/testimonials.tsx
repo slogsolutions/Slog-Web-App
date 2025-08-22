@@ -46,17 +46,16 @@ export default function TestimonialsSection() {
   const currentTestimonial = testimonials[currentIndex]
 
   return (
-    <section className="py-16 px-4 md:px-8 lg:px-16">
+    <section className="py-8 px-4 md:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
         {/* Main container with soft grey-blue background */}
-        <div className="relative bg-[#bfcfcf] rounded-3xl md:p-12 ">
+        <div className="relative bg-[#bfcfcf] rounded-3xl md:p-6 ">
           
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mt-8">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
             {/* Left side - Heading and navigation */}
-            <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight">
-                WHAT OUR
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground leading-tight">WHAT OUR
                 <br />
                 CUSTOMERS
                 <br />
@@ -86,17 +85,17 @@ export default function TestimonialsSection() {
 
             {/* Right side - Testimonial content */}
             <div className="relative">
-              <div className="space-y-6">
+              <div>
                 {/* Quote icon */}
                 <img src={dq.src} alt="Quote" className="h-5 w-5 text-muted-foreground" />
 
                 {/* Testimonial text */}
-                <p className="text-lg md:text-xl text-foreground leading-relaxed font-medium pl-2 text-justify">
+                  <p className="text-base md:text-lg text-foreground leading-relaxed font-medium pl-2 text-justify">
                   {currentTestimonial.text}
                 </p>
 
                 {/* Customer info with decorative arrow */}
-                <div className="flex items-center gap-4 pt-4">
+                <div className="flex items-center gap-4">
                   {/* Decorative hand-drawn style arrow */}
                   <div className="hidden md:block">
   <svg
@@ -179,7 +178,7 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Carousel dots */}
-              <div className="flex gap-2 mt-8 justify-center lg:justify-end">
+              <div className="flex gap-2 justify-center lg:justify-end">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}

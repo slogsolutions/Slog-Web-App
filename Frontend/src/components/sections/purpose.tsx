@@ -3,7 +3,7 @@ import React from 'react';
 
 const PurposeSection = () => {
   return (
-      <div className="purpose-container bg-white px-4">
+      <div className="purpose-container bg-white px-4" id="aboutus">
   <div className="relative text-center px-6 py-12 border border-sky-400 rounded-lg bg-white shadow-lg mb-10">
     {/* Heading */}
     <h2 className="text-3xl font-bold text-black mb-4">
