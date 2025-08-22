@@ -9,6 +9,7 @@ import Testimonials from '@/components/sections/testimonials';
 import AiSuggester from '@/components/sections/ai-suggester';
 import Purpose from '@/components/sections/purpose';
 import PurposeSection from '@/components/sections/purpose';
+import ClientsSection from '@/components/sections/ClientsSection';
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         {/* <WhyChooseUs /> */}
         <Partners />
         <PurposeSection />
+        <ClientsSection />
         {/* <About /> */}
         <Testimonials />
       </main>

@@ -32,10 +32,10 @@ const PurposeSection = () => {
         </div>
         <div className="stat-item">
           <div className="stat-number">500+</div>
-          <div className="stat-label">Sucessful Training Programs</div>
+          <div className="stat-label">Successful Training Programs</div>
         </div>
         <div className="stat-item">
-          <div className="stat-number">1500+</div>
+          <div className="stat-number">15k+</div>
           <div className="stat-label">Happy Customers</div>
         </div>
       </div>

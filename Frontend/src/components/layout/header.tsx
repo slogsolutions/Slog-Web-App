@@ -357,9 +357,11 @@ export default function Header() {
 
           {/* Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" className="rounded-full">
-              Login / Sign Up
-            </Button>
+            <Link href="https://slog-web-app.onrender.com/admin/login/?next=/admin/">
+              <Button variant="outline" className="rounded-full w-full">
+                  Login / Sign Up
+              </Button>
+            </Link>
              <EnquiryForm
                       triggerButton={
             <Button className="rounded-full bg-cyan-500 hover:bg-cyan-600 text-white">
@@ -413,9 +415,11 @@ export default function Header() {
                   ))}
                 </nav>
                 <div className="mt-8 flex flex-col space-y-4">
-                  <Button variant="outline" className="rounded-full w-full">
-                    Login / Sign Up
-                  </Button>
+                  <Link href="https://slog-web-app.onrender.com/admin/login/?next=/admin/">
+                    <Button variant="outline" className="rounded-full w-full">
+                      Login / Sign Up
+                    </Button>
+                  </Link>
                   <EnquiryForm
                       triggerButton={
                         <Button className="rounded-full w-full bg-cyan-500 hover:bg-cyan-600 text-white">
