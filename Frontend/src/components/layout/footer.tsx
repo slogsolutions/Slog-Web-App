@@ -9,8 +9,8 @@ const footerLinks = [
   { href: "/development", label: "Development" },
   { href: "/training", label: "Corporate & Governmnet trainings" },
   { href: "/outbound", label: "Outbound Training" },
-  { href: "/training", label: "Student Trainings" },
   { href: "/defence", label: "Minstry Of Defence" },
+  { href: "/training", label: "Student Trainings" },
   { href: "#testimonials", label: "Testimonials" },
   { href: "#faqs", label: "FAQs" },
 ];
