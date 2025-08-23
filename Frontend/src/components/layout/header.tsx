@@ -118,6 +118,7 @@ const services = [
 
 const resourcesItems = [
   { href: "#joinus", label: "Join Us" },
+  { href: "https://slogedu.slogsolutions.com/", label: "LMS" },
   { href: "https://backup.slogsolutions.com/certificateverify.php", label: "Verify Certificates" },
   { href: "/faq", label: "FAQ" },
 ];
@@ -400,7 +401,7 @@ export default function Header() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-white"
                   >
-                    <X className="h-6 w-6" />
+                    {/* <X className="h-6 w-6" /> */}
                   </Button>
                 </div>
                 

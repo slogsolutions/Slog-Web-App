@@ -17,7 +17,7 @@ const heroSlides = [
     dataAiHint: "Development",
     superTitle: "Development",
     description:
-      "We specialize in delivering end-to-end technology solutions, from custom software development to advanced lab setup and innovative product development. Our expertise ensures reliable, scalable, and cutting-edge services tailored to your needs.",
+      "We provide complete technology solutions, including custom software, advanced lab setups, and innovative product development—reliable, scalable, and tailored to your needs.",
     route: "/development",
     buttonText: "Know More",
   },
@@ -26,7 +26,7 @@ const heroSlides = [
     dataAiHint: "modern classroom technology",
     superTitle: "Corporate and Government Trainings",
     description:
-      "SLOG offers advanced Summer Training and Internship programs in Dehradun, integrating practical project-based modules, a 100% Job Guarantee, and structured placement assistance to bridge the gap between education and industry.",
+      "Advanced Summer Training and Internship programs with practical projects, 100% job guarantee, and placement support in Dehradun",
     route: "/training",
     buttonText: "Explore",
   },
@@ -79,7 +79,7 @@ export default function Hero() {
           </div>
 
           {/* Overlay */}
-          <div className="absolute inset-0 z-10 bg-black/40" />
+          <div className="absolute inset-0 z-10" />
 
           {/* Slide Content */}
           <div className="absolute inset-0 flex items-center justify-center z-20">
