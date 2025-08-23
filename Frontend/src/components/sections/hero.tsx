@@ -79,7 +79,7 @@ export default function Hero() {
           </div>
 
           {/* Overlay */}
-          <div className="absolute inset-0 z-10" />
+          <div className="absolute inset-0 z-10 bg-black/40" />
 
           {/* Slide Content */}
           <div className="absolute inset-0 flex items-center justify-center z-20">
@@ -87,20 +87,20 @@ export default function Hero() {
               <div
                 className={`flex flex-col md:flex-row ${
                   index % 2 !== 0 ? "md:flex-row-reverse" : ""
-                } items-center justify-between gap-8`}
+                } items-center justify-between gap-4 md:gap-8`}
               >
                 <div
-                  className={`max-w-3xl text-white ${
-                    index % 2 !== 0 ? "text-right" : "text-left"
-                  }`}
+                  className={`max-w-3xl text-white text-center md:text-left ${
+                    index % 2 !== 0 ? "md:text-right" : "md:text-left"
+                  } px-4 md:px-0`}
                 >
-                  <div className="[font-family:'Poiret_One',Helvetica] text-6xl md:text-7xl leading-[80px] font-semibold tracking-wide bg-gradient-to-r from-blue-300 via-cyan-300 to-teal-500 bg-clip-text text-transparent mb-4">
+                  <div className="[font-family:'Poiret_One',Helvetica] text-4xl md:text-6xl lg:text-7xl md:leading-[80px] font-semibold tracking-wide bg-gradient-to-r from-blue-300 via-cyan-300 to-teal-500 bg-clip-text text-transparent mb-2 md:mb-4">
                     {slide.superTitle}
                   </div>
 
                   {/* Title / Typewriter effect */}
                   {index === 0 ? (
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
                       <Typewriter
                         words={[
                           "Software Development",
@@ -116,7 +116,7 @@ export default function Hero() {
                       />
                     </h2>
                   ) : index === 1 ? (
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
                       <Typewriter
                         words={[
                           "Advanced IT & Digital Transformation",
@@ -134,23 +134,23 @@ export default function Hero() {
                       />
                     </h2>
                   ) : (
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
                       {slide.title}
                     </h2>
                   )}
 
-                  <p className="text-2xl mt-2 leading-10 text-justify">
+                  <p className="text-base md:text-xl lg:text-2xl mt-2 leading-6 md:leading-10 text-justify md:text-left">
                     {slide.description}
                   </p>
 
                   <Link href={slide.route}>
-  <Button
-    size="lg"
-    className="mt-8 px-8 py-6 text-lg rounded-lg"
-  >
-    {slide.buttonText}
-  </Button>
-</Link>
+                    <Button
+                      size="lg"
+                      className="mt-4 md:mt-8 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg rounded-lg"
+                    >
+                      {slide.buttonText}
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

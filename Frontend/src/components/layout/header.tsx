@@ -31,7 +31,7 @@ import studtraining2 from "../../assets/studtraining1.png";
 import studtraining3 from "../../assets/studtraining2.png";
 import studtraining4 from "../../assets/studtraining3.png";
 
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -119,7 +119,7 @@ const services = [
 
 const resourcesItems = [
   { href: "#joinus", label: "Join Us" },
-  { href: "#verify-certificates", label: "Verify Certificates" },
+  { href: "https://backup.slogsolutions.com/certificateverify.php", label: "Verify Certificates" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -133,6 +133,8 @@ export default function Header() {
   const [displayImages, setDisplayImages] = useState(
     services[0].images || []
   );
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
 
   useEffect(() => {
     const allImages: string[] = [];
@@ -164,18 +166,19 @@ export default function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-black/50  backdrop-blur-sm shadow-md" : "bg-transparent"
+        isScrolled ? "bg-black/50 backdrop-blur-sm shadow-md" : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
               src={logo}
               alt="Slog Logo"
-              width={100}
-              height={57}
+              width={80}
+              height={45}
+              className="md:w-100 md:h-57"
               priority
             />
           </Link>
@@ -220,47 +223,47 @@ export default function Header() {
                       onMouseLeave={() => setIsDropdownOpen(false)}
                     >
                       {/* Services list */}
-<div className="w-1/4 p-4 bg-gray-800">
-  <div className="bg-white text-black p-3 shadow-md w-full">
-    {services.map((service) => (
-      <div
-        key={service.name}
-        className={`p-3 cursor-pointer font-semibold transition-all duration-300 hover:bg-gray-200/70 
-          ${activeMain === service.name ? "bg-gray-100" : ""}`}
-        onMouseEnter={() => {
-          setActiveMain(service.name);
-          setSelectedService(service);
-        }}
-      >
-        {service.name}
-      </div>
-    ))}
-  </div>
-</div>
+                      <div className="w-1/4 p-4 bg-gray-800">
+                        <div className="bg-white text-black p-3 shadow-md w-full">
+                          {services.map((service) => (
+                            <div
+                              key={service.name}
+                              className={`p-3 cursor-pointer font-semibold transition-all duration-300 hover:bg-gray-200/70 
+                                ${activeMain === service.name ? "bg-gray-100" : ""}`}
+                              onMouseEnter={() => {
+                                setActiveMain(service.name);
+                                setSelectedService(service);
+                              }}
+                            >
+                              {service.name}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
 
-{/* Service details */}
-<div className="w-1/4 p-6 flex flex-col text-left">
-  <h3 className="text-2xl font-bold">{selectedService.name}</h3>
-  <p className="mb-4 text-gray-300 text-sm">{selectedService.description}</p>
+                      {/* Service details */}
+                      <div className="w-1/4 p-6 flex flex-col text-left">
+                        <h3 className="text-2xl font-bold">{selectedService.name}</h3>
+                        <p className="mb-4 text-gray-300 text-sm">{selectedService.description}</p>
 
-  {selectedService.subOptions && (
-    <div className="space-y-3">
-      {selectedService.subOptions.map((sub) => (
-        <div key={sub.name}>
-          <h4 className="text-lg font-semibold">{sub.name}</h4>
-          <p className="text-gray-400 text-xs">{sub.description}</p>
-        </div>
-      ))}
-    </div>
-  )}
+                        {selectedService.subOptions && (
+                          <div className="space-y-3">
+                            {selectedService.subOptions.map((sub) => (
+                              <div key={sub.name}>
+                                <h4 className="text-lg font-semibold">{sub.name}</h4>
+                                <p className="text-gray-400 text-xs">{sub.description}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
 
-  {/* Navigate with Next.js Link */}
-  <Link href={selectedService.path || "/services"}>
-    <Button className="mt-1 bg-cyan-500 text-white hover:bg-cyan-600 rounded-lg w-fit text-sm py-2 px-4">
-      Explore Now
-    </Button>
-  </Link>
-</div>
+                        {/* Navigate with Next.js Link */}
+                        <Link href={selectedService.path || "/services"}>
+                          <Button className="mt-1 bg-cyan-500 text-white hover:bg-cyan-600 rounded-lg w-fit text-sm py-2 px-4">
+                            Explore Now
+                          </Button>
+                        </Link>
+                      </div>
 
                       {/* Images */}
                       <div className="w-2/4 mt-6 mr-6">
@@ -369,28 +372,26 @@ export default function Header() {
             </Button>
              }
                   />
-
-
           </div>
 
           {/* Mobile Menu */}
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6 text-black" />
+                <Button variant="ghost" size="icon" className="text-white">
+                  <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-full max-w-xs bg-gray-900 text-white p-6"
+                className="w-full max-w-xs bg-gray-900 text-white p-6 overflow-y-auto"
               >
-                <div className="flex justify-between items-center mb-8">
+                <div className="flex justify-between items-center mb-6">
                   <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
                     <Image
                       src={logo}
                       alt="Slog Logo"
-                      width={120}
+                      width={100}
                       height={45}
                     />
                   </Link>
@@ -398,36 +399,112 @@ export default function Header() {
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-white"
                   >
                     <X className="h-6 w-6" />
                   </Button>
                 </div>
+                
                 <nav className="flex flex-col space-y-4">
                   {navItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-bold hover:text-cyan-400"
-                    >
-                      {item.label}
-                    </Link>
+                    <div key={item.label}>
+                      {item.label === "Services" ? (
+                        <div>
+                          <button 
+                            className="flex items-center justify-between w-full text-lg font-bold hover:text-cyan-400 py-2"
+                            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                          >
+                            <span>{item.label}</span>
+                            <ChevronDown className={`h-5 w-5 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+                          </button>
+                          
+                          {mobileServicesOpen && (
+                            <div className="pl-4 mt-2 space-y-3 border-l border-gray-700">
+                              {services.map((service) => (
+                                <div key={service.name} className="py-2">
+                                  <Link
+                                    href={service.path}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="font-semibold hover:text-cyan-400 block"
+                                  >
+                                    {service.name}
+                                  </Link>
+                                  {service.subOptions && (
+                                    <div className="pl-3 mt-1 space-y-2">
+                                      {service.subOptions.map((sub) => (
+                                        <Link
+                                          key={sub.name}
+                                          href={service.path}
+                                          onClick={() => setIsMobileMenuOpen(false)}
+                                          className="text-sm text-gray-300 hover:text-cyan-400 block"
+                                        >
+                                          {sub.name}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : item.label === "Resources" ? (
+                        <div>
+                          <button 
+                            className="flex items-center justify-between w-full text-lg font-bold hover:text-cyan-400 py-2"
+                            onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+                          >
+                            <span>{item.label}</span>
+                            <ChevronDown className={`h-5 w-5 transition-transform ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
+                          </button>
+                          
+                          {mobileResourcesOpen && (
+                            <div className="pl-4 mt-2 space-y-2 border-l border-gray-700">
+                              {resourcesItems.map((res) => (
+                                <Link
+                                  key={res.label}
+                                  href={res.href}
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                  className="block text-gray-300 hover:text-cyan-400"
+                                >
+                                  {res.label}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-lg font-bold hover:text-cyan-400 py-2 block"
+                        >
+                          {item.label}
+                        </Link>
+                      )}
+                    </div>
                   ))}
                 </nav>
+                
                 <div className="mt-8 flex flex-col space-y-4">
-                  <Link href="https://slog-web-app.onrender.com/admin/login/?next=/admin/">
+                  <Link 
+                    href="https://slog-web-app.onrender.com/admin/login/?next=/admin/"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
                     <Button variant="outline" className="rounded-full w-full">
                       Login / Sign Up
                     </Button>
                   </Link>
                   <EnquiryForm
-                      triggerButton={
-                        <Button className="rounded-full w-full bg-cyan-500 hover:bg-cyan-600 text-white">
-                          Enquiry
-                        </Button>
-                      }
+                    triggerButton={
+                      <Button 
+                        className="rounded-full w-full bg-cyan-500 hover:bg-cyan-600 text-white"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Enquiry
+                      </Button>
+                    }
                   />
-
                 </div>
               </SheetContent>
             </Sheet>
