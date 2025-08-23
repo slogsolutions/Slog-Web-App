@@ -3,11 +3,19 @@ from django.db import models
 class Mentor(models.Model):
     name = models.CharField(max_length=200)
     designation = models.CharField(max_length=400)
-    image = models.ImageField(upload_to='mentors/')  # stores in MEDIA_ROOT/mentors/
+    image = models.ImageField(upload_to='mentors/')
+    sort_order = models.PositiveIntegerField(
+        default=0,
+        db_index=True,
+        help_text="Lower number shows first"
+    )
+
+    class Meta:
+        ordering = ["sort_order", "id"]  # <- ensures every query returns mentors in this order
 
     def __str__(self):
         return self.name
-    
+
 
 class Course(models.Model):
     title = models.CharField(max_length=100)
@@ -16,7 +24,7 @@ class Course(models.Model):
     duration = models.CharField(max_length=50)
     price = models.CharField(max_length=20)
     category = models.CharField(max_length=100)
-    description = models.TextField(blank=True, null=True)  # new field
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.title
