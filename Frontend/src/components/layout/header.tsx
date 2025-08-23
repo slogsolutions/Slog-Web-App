@@ -36,6 +36,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import EnquiryForm from "../EnquiryForm";
+import JoinUsForm from "../Joinusform"; // Import the new component
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -137,7 +138,7 @@ export default function Header() {
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
 
   useEffect(() => {
-    const allImages: string[] = [];
+    const allImages = [];
     if (selectedService.images) allImages.push(...selectedService.images);
     if (selectedService.subOptions) {
       selectedService.subOptions.forEach((option) => {
@@ -335,13 +336,21 @@ export default function Header() {
                       onMouseLeave={() => setIsResourcesDropdownOpen(false)}
                     >
                       {resourcesItems.map((res) => (
-                        <Link
-                          key={res.label}
-                          href={res.href}
-                          className="block px-4 py-2 hover:bg-gray-100 text-sm hover:text-black"
-                        >
-                          {res.label}
-                        </Link>
+                        res.label === "Join Us" ? (
+                          <JoinUsForm key={res.label} triggerButton={
+                            <Button variant="ghost" className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm hover:text-black">
+                              {res.label}
+                            </Button>
+                          }/>
+                        ) : (
+                          <Link
+                            key={res.label}
+                            href={res.href}
+                            className="block px-4 py-2 hover:bg-gray-100 text-sm hover:text-black"
+                          >
+                            {res.label}
+                          </Link>
+                        )
                       ))}
                     </div>
                   </div>
@@ -362,16 +371,16 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <Link href="https://slog-web-app.onrender.com/admin/login/?next=/admin/">
               <Button variant="outline" className="rounded-full w-full">
-                  Login / Sign Up
+                Login / Sign Up
               </Button>
             </Link>
-             <EnquiryForm
-                      triggerButton={
+              <EnquiryForm
+                  triggerButton={
             <Button className="rounded-full bg-cyan-500 hover:bg-cyan-600 text-white">
               Enquiry
             </Button>
-             }
-                  />
+                  }
+                />
           </div>
 
           {/* Mobile Menu */}
@@ -401,7 +410,7 @@ export default function Header() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="text-white"
                   >
-                    {/* <X className="h-6 w-6" /> */}
+                    <X className="h-6 w-6" />
                   </Button>
                 </div>
                 
@@ -461,14 +470,22 @@ export default function Header() {
                           {mobileResourcesOpen && (
                             <div className="pl-4 mt-2 space-y-2 border-l border-gray-700">
                               {resourcesItems.map((res) => (
-                                <Link
-                                  key={res.label}
-                                  href={res.href}
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                  className="block text-gray-300 hover:text-cyan-400"
-                                >
-                                  {res.label}
-                                </Link>
+                                res.label === "Join Us" ? (
+                                  <JoinUsForm key={res.label} triggerButton={
+                                    <Button variant="ghost" className="block w-full text-left font-normal text-gray-300 hover:text-cyan-400 px-0 py-0">
+                                      {res.label}
+                                    </Button>
+                                  }/>
+                                ) : (
+                                  <Link
+                                    key={res.label}
+                                    href={res.href}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="block text-gray-300 hover:text-cyan-400"
+                                  >
+                                    {res.label}
+                                  </Link>
+                                )
                               ))}
                             </div>
                           )}
