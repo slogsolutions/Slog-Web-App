@@ -42,7 +42,6 @@ const navItems = [
   { href: "/#services", label: "Services" },
   { href: "/#resources", label: "Resources" },
   { href: "/mentors", label: "Mentors" },
-  { href: "/#testimonials", label: "Testimonials" },
   { href: "/#contact", label: "Contact" },
 ];
 
@@ -120,7 +119,7 @@ const services = [
 const resourcesItems = [
   { href: "#joinus", label: "Join Us" },
   { href: "https://backup.slogsolutions.com/certificateverify.php", label: "Verify Certificates" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/faq", label: "FAQ" },
 ];
 
 export default function Header() {
