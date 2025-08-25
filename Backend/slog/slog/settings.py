@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "slog-web-app.vercel.app",
     "slog-web-app.onrender.com",
+    "slogsolutions.onrender.com",
+    "slogsolutions.vercel.app",
     "localhost",
     "127.0.0.1",
 ]
