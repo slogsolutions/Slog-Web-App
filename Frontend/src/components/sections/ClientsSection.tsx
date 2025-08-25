@@ -9,10 +9,10 @@ const ClientsSection = () => {
     { name: 'Indian Army', logo: '/clients/indian_army.png' },
     { name: 'Indian Navy', logo: '/clients/navey.png' },
     { name: 'Indian Air Force', logo: '/clients/air_force.png' },
-    { name: 'DRDO', logo: '/clients/DRDO.png  ' },
+    { name: 'DRDO', logo: '/clients/DRDO.png' },
     { name: 'Power Grid', logo: '/clients/Power_Grid.png' },
     { name: 'THDC', logo: '/clients/thdc.png' },
-    { name: 'Power Corporation', logo: '/clients/power_corporation.png' },
+    { name: 'Power Corporation', logo: '/clients/Power_Corporation.png' },
     { name: 'STPI', logo: '/clients/STPI.png' },
     { name: 'Indian Coast Guard', logo:'/clients/Indian_Coast_ Guard.png'  },
     { name: 'KVS Sangathan', logo: '/clients/KVS _Sangathan.png' },
@@ -28,7 +28,7 @@ const ClientsSection = () => {
     { name: 'Graphic Era University', logo: '/clients/Graphic_Era_University.png' },
     { name: 'DIT University', logo: '/clients/DIT_University.png' },
     { name: 'UPES', logo: '/clients/UPES.png' },
-    { name: 'Dbrait', logo: '/clients/Dbrait.png' },
+    { name: 'Dbrait', logo: '/clients/dbrait.png' },
   ];
 
   // Split clients into groups
