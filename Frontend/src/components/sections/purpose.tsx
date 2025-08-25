@@ -11,7 +11,7 @@ const PurposeSection = () => {
     </h2>
 
     {/* Paragraph */}
-    <p className="text-lg font-bold text-black leading-relaxed">
+    <p className="text-3xl  text-black leading-relaxed">
   Our purpose is to empower individuals, organizations, and communities by 
   fostering innovation, building sustainable solutions, and creating meaningful 
   opportunities. We are committed to amplifying human potential through 
