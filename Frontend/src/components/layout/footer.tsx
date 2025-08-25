@@ -12,7 +12,8 @@ const footerLinks = [
   { href: "/defence", label: "Minstry Of Defence" },
   { href: "/training", label: "Student Trainings" },
   { href: "#testimonials", label: "Testimonials" },
-  { href: "#faqs", label: "FAQs" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/faqs", label: "FAQs" },
 ];
 
 const socialLinks = [

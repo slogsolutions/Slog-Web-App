@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Typewriter } from "react-simple-typewriter";
 import updateslide2 from "../../assets/updateslide2.1.png";
 import slide1 from "../../assets/slide1.jpeg";
-import slide3 from "../../assets/slide3.jpeg";
+import slide3 from "../../assets/slide3.png";
 import slide11 from "../../assets/slide11.png";
 import updateslide3 from "../../assets/updateslide3.png";
 import student_slide from "../../assets/slide10.png";
@@ -43,10 +43,10 @@ const heroSlides = [
   {
     image: updateslide2,
     dataAiHint: "students collaborating computer",
-    superTitle: "Expert Mentors",
-    title: "Learn from Industry Leaders",
+    superTitle: "Ministry of Defence",
+    title: "Empowering the Defence Sector",
     description:
-      "Our instructors are experienced professionals passionate about sharing their knowledge and helping you succeed in your career.",
+      "Specialized defence training programs, secure software solutions, and high-security lab setups tailored for the defence sector.",
     route: "/defence",
     buttonText: "Explore",
   },

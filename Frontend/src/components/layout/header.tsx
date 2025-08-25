@@ -120,7 +120,8 @@ const resourcesItems = [
   { href: "#joinus", label: "Join Us" },
   { href: "https://slogedu.slogsolutions.com/", label: "LMS" },
   { href: "https://backup.slogsolutions.com/certificateverify.php", label: "Verify Certificates" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/faq", label: "FAQs" },
+  { href: "/gallery", label: "Gallery" },
 ];
 
 export default function Header() {

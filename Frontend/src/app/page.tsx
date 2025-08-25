@@ -24,7 +24,7 @@ export default function Home() {
         <PurposeSection />
         <ClientsSection />
         {/* <About /> */}
-        <Testimonials />
+        {/* <Testimonials /> */}
       </main>
       {/* <Footer /> */}
     </div>
