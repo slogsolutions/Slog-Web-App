@@ -143,9 +143,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # MEDIA_URL_FULL = "https://slog-web-app.onrender.com" + MEDIA_URL
-CORS_ALLOWED_ORIGINS = [
-    "https://www.slogsolutions.com/",
-    "https://slogsolutions.com/",
-    "https://slogsolutions.vercel.app",
-    "https://slogsolutions.onrender.com",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "https://www.slogsolutions.com/",
+#     "https://slogsolutions.com/",
+#     "https://slogsolutions.vercel.app",
+#     "https://slogsolutions.onrender.com",
+# ]
