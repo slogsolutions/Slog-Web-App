@@ -30,7 +30,19 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https', // Render production
-        hostname: 'slog-web-app.onrender.com',
+        hostname: 'slogsolutions.onrender.com',
+        port: '',
+        pathname: '/media/**',
+      },
+      {
+        protocol: 'https', // Render production
+        hostname: 'slogsolutions.com',
+        port: '',
+        pathname: '/media/**',
+      },
+      {
+        protocol: 'https', // Render production
+        hostname: 'www.slogsolutions.com',
         port: '',
         pathname: '/media/**',
       },
