@@ -160,3 +160,4 @@ CORS_ALLOWED_ORIGINS = [
     "https://slogsolutions.vercel.app",
     "https://slogsolutions.onrender.com",
 ]
+

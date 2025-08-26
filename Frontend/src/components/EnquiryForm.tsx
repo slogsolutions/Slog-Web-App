@@ -80,6 +80,13 @@ export default function EnquiryForm({ triggerButton }: { triggerButton: React.Re
                   <a href="tel:7456000240" className="text-blue-600 hover:text-blue-800">7456000240</a>
                   <a href="tel:7456000241" className="text-blue-600 hover:text-blue-800">7456000241</a>
                 </div>
+
+                <div className="flex items-center justify-center p-2 bg-purple-50 rounded-lg">
+              <a href="mailto:slogcounsellor@gmail.com" className="flex items-center text-purple-700 text-sm font-medium">
+                <Mail className="h-4 w-4 mr-2" />
+                slog.doon@gmail.com
+              </a>
+            </div>
               </div>
             </div>
             
@@ -91,15 +98,18 @@ export default function EnquiryForm({ triggerButton }: { triggerButton: React.Re
                   <a href="tel:7456000242" className="text-green-600 hover:text-green-800">7456000242</a>
                   <a href="tel:7456000244" className="text-green-600 hover:text-green-800">7456000244</a>
                 </div>
-              </div>
-            </div>
-            
-            <div className="flex items-center justify-center p-2 bg-purple-50 rounded-lg">
+
+
+                 <div className="flex items-center justify-center p-2 bg-purple-50 rounded-lg">
               <a href="mailto:slogcounsellor@gmail.com" className="flex items-center text-purple-700 text-sm font-medium">
                 <Mail className="h-4 w-4 mr-2" />
                 slogcounsellor@gmail.com
               </a>
             </div>
+              </div>
+            </div>
+            
+           
           </div>
         </div>
         
