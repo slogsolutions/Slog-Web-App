@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Course
+from .models import Course, Mentor, Gallery   
 
 # serializers.py
 from .models import Mentor
@@ -16,3 +17,9 @@ class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
         fields = '__all__'
+
+
+class GallerySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Gallery
+        fields = "__all__"
