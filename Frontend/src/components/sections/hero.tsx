@@ -40,7 +40,7 @@ const defaultSlides: HeroSlide[] = [
     image: slide3.src,
     superTitle: "Corporate and Government Trainings",
     description:
-      "Industry-aligned corporate and government training programs featuring modern classroom technology, hands-on projects, and real-world internship opportunities.",
+      "Specialized corporate and government training programs designed to enhance technical skills, leadership, and productivity through hands-on learning and real-world projects.",
     route: "/training",
     buttonText: "Explore",
   },
@@ -128,7 +128,7 @@ useEffect(() => {
           </div>
 
           {/* Overlay */}
-          <div className="absolute inset-0 z-10 bg-black/40" />
+          <div className="absolute inset-0 z-10" />
 
           {/* Slide Content */}
           <div className="absolute inset-0 flex items-center justify-center z-20">
@@ -143,7 +143,7 @@ useEffect(() => {
                     index % 2 !== 0 ? "md:text-right" : "md:text-left"
                   } px-4 md:px-0`}
                 >
-                  <div className="[font-family:'Poiret_One',Helvetica] text-4xl md:text-6xl lg:text-7xl md:leading-[80px] font-semibold tracking-wide bg-gradient-to-r from-blue-300 via-cyan-300 to-teal-500 bg-clip-text text-transparent mb-2 md:mb-4">
+                  <div className="[font-family:'Poiret_One',Helvetica] text-4xl md:text-6xl lg:text-7xl md:leading-[80px] font-semibold tracking-wide bg-gradient-to-r from-blue-300 via-cyan-300 to-teal-500 bg-clip-text text-transparent mb-2 md:mb-4 pb-2">
                     {slide.superTitle}
                   </div>
 
