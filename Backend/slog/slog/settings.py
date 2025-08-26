@@ -160,5 +160,4 @@ CORS_ALLOWED_ORIGINS = [
     "https://slogsolutions.vercel.app",
     "https://slogsolutions.onrender.com",
 ]
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+
