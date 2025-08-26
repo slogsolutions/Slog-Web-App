@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -85,12 +86,22 @@ WSGI_APPLICATION = 'slog.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
+# If DATABASE_URL is set, override with Postgres
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL:
+    DATABASES["default"] = dj_database_url.config(
+        default=DATABASE_URL, conn_max_age=600, ssl_require=False
+)
+
+# DATABASES = {
+#     'default': dj_database_url.parse("postgresql://slogsolutions_user:bZXztkzcQqKqhqB26IZdFSXkEpN8saMU@dpg-d2mk041r0fns73b9ctqg-a.oregon-postgres.render.com/slogsolutions")
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -143,9 +154,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # MEDIA_URL_FULL = "https://slog-web-app.onrender.com" + MEDIA_URL
-# CORS_ALLOWED_ORIGINS = [
-#     "https://www.slogsolutions.com/",
-#     "https://slogsolutions.com/",
-#     "https://slogsolutions.vercel.app",
-#     "https://slogsolutions.onrender.com",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "https://www.slogsolutions.com",
+    "https://slogsolutions.com",
+    "https://slogsolutions.vercel.app",
+    "https://slogsolutions.onrender.com",
+]
+
