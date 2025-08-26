@@ -1,8 +1,6 @@
 from rest_framework import serializers
-from .models import Course
+from .models import Course, Mentor, HeroSlide
 
-# serializers.py
-from .models import Mentor
 
 class MentorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,8 +9,28 @@ class MentorSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    image = serializers.ImageField(use_url=True)
+    image = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
         fields = '__all__'
+
+    def get_image(self, obj):
+        request = self.context.get("request")
+        if obj.image and hasattr(obj.image, "url"):
+            return request.build_absolute_uri(obj.image.url)
+        return None
+
+
+class HeroSlideSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = HeroSlide
+        fields = ["id", "position", "image"]
+
+    def get_image(self, obj):
+        request = self.context.get("request")
+        if obj.image and hasattr(obj.image, "url"):
+            return request.build_absolute_uri(obj.image.url)
+        return None

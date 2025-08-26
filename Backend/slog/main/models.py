@@ -11,7 +11,7 @@ class Mentor(models.Model):
     )
 
     class Meta:
-        ordering = ["sort_order", "id"]  # <- ensures every query returns mentors in this order
+        ordering = ["sort_order", "id"]
 
     def __str__(self):
         return self.name
@@ -28,3 +28,14 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class HeroSlide(models.Model):
+    position = models.PositiveIntegerField(unique=True)  # 1 to 5 fixed
+    image = models.ImageField(upload_to="hero_slides/")
+
+    class Meta:
+        ordering = ["position"]
+
+    def __str__(self):
+        return f"Slide {self.position}"
