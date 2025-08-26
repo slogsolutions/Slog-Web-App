@@ -17,13 +17,28 @@ class Mentor(models.Model):
         return self.name
 
 
+
+CATEGORY_CHOICES = [
+    ("All Courses", "All Courses"),
+    ("Computer Science", "Computer Science"),
+    ("Civil Tools", "Civil Tools"),
+    ("Mechanical Tools", "Mechanical Tools"),
+    ("Architecture", "Architecture"),
+    ("Specialized", "Specialized"),
+    ("Networking", "Networking"),
+    ("Creative Arts", "Creative Arts"),
+]
+
 class Course(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to="courses/")
     data_ai_hint = models.CharField(max_length=200, blank=True)
     duration = models.CharField(max_length=50)
     price = models.CharField(max_length=20)
-    category = models.CharField(max_length=100)
+    category = models.CharField(
+        max_length=100,
+        choices=CATEGORY_CHOICES,
+    )
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
