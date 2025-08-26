@@ -99,6 +99,10 @@ if DATABASE_URL:
         default=DATABASE_URL, conn_max_age=600, ssl_require=False
 )
 
+# DATABASES = {
+#     'default': dj_database_url.parse("postgresql://slogsolutions_user:bZXztkzcQqKqhqB26IZdFSXkEpN8saMU@dpg-d2mk041r0fns73b9ctqg-a.oregon-postgres.render.com/slogsolutions")
+# }
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
