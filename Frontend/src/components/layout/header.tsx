@@ -119,7 +119,6 @@ const services = [
 
 const resourcesItems = [
   { href: "#joinus", label: "Join Us" },
-  { href: "/about", label: "About Us" }, // ✅ Added About Us here
   { href: "https://slogedu.slogsolutions.com/", label: "LMS" },
   { href: "https://backup.slogsolutions.com/certificateverify.php", label: "Verify Certificates" },
   { href: "/faq", label: "FAQs" },
@@ -190,14 +189,114 @@ export default function Header() {
           <nav className="hidden md:flex md:items-center md:space-x-8">
             {navItems.map((item) =>
               item.label === "Services" ? (
-                // ... unchanged Services dropdown code
                 <div
                   className="relative group"
                   key={item.label}
                   onMouseEnter={() => setIsDropdownOpen(true)}
                   onMouseLeave={() => setIsDropdownOpen(false)}
                 >
-                  {/* Services dropdown code unchanged */}
+                  <button className="text-sm font-bold text-white hover:text-cyan-600 flex items-center py-2">
+                    {item.label}
+                    <svg
+                      className="ml-1 h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 25 25"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Dropdown */}
+                  <div
+                    className={`absolute left-0 pt-2 w-[850px] transition-all duration-200 ${
+                      isDropdownOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                    }`}
+                  >
+                    <div
+                      className="flex bg-gray-900 text-white rounded-xl shadow-lg border border-gray-800 overflow-hidden z-50"
+                      onMouseEnter={() => setIsDropdownOpen(true)}
+                      onMouseLeave={() => setIsDropdownOpen(false)}
+                    >
+                      {/* Services list */}
+                      <div className="w-1/4 p-4 bg-gray-800">
+                        <div className="bg-white text-black p-3 shadow-md w-full">
+                          {services.map((service) => (
+                            <div
+                              key={service.name}
+                              className={`p-3 cursor-pointer font-semibold transition-all duration-300 hover:bg-gray-200/70 
+                                ${activeMain === service.name ? "bg-gray-100" : ""}`}
+                              onMouseEnter={() => {
+                                setActiveMain(service.name);
+                                setSelectedService(service);
+                              }}
+                            >
+                              {service.name}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Service details */}
+                      <div className="w-1/4 p-6 flex flex-col text-left">
+                        <h3 className="text-2xl font-bold">{selectedService.name}</h3>
+                        <p className="mb-4 text-gray-300 text-sm">{selectedService.description}</p>
+
+                        {selectedService.subOptions && (
+                          <div className="space-y-3">
+                            {selectedService.subOptions.map((sub) => (
+                              <div key={sub.name}>
+                                <h4 className="text-lg font-semibold">{sub.name}</h4>
+                                <p className="text-gray-400 text-xs">{sub.description}</p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Navigate with Next.js Link */}
+                        <Link href={selectedService.path || "/services"}>
+                          <Button className="mt-1 bg-cyan-500 text-white hover:bg-cyan-600 rounded-lg w-fit text-sm py-2 px-4">
+                            Explore Now
+                          </Button>
+                        </Link>
+                      </div>
+
+                      {/* Images */}
+                      <div className="w-2/4 mt-6 mr-6">
+                        {displayImages.length > 0 && (
+                          <div className="grid grid-cols-1 gap-2 max-w-full">
+                            <img
+                              src={displayImages[0]}
+                              alt="Main preview"
+                              className="h-40 w-full object-cover rounded-lg transition-all duration-500"
+                            />
+                            <div className="grid grid-cols-2 gap-2">
+                              {displayImages[1] && (
+                                <img
+                                  src={displayImages[1]}
+                                  alt="Preview small 1"
+                                  className="h-30 w-full object-cover rounded-lg transition-all duration-500"
+                                />
+                              )}
+                              {displayImages[2] && (
+                                <img
+                                  src={displayImages[2]}
+                                  alt="Preview small 2"
+                                  className="h-30 w-full object-cover rounded-lg transition-all duration-500"
+                                />
+                              )}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ) : item.label === "Resources" ? (
                 <div
@@ -320,8 +419,45 @@ export default function Header() {
                   {navItems.map((item) => (
                     <div key={item.label}>
                       {item.label === "Services" ? (
-                        // ... unchanged mobile Services
-                        <div> ... </div>
+                        <div>
+                          <button 
+                            className="flex items-center justify-between w-full text-lg font-bold hover:text-cyan-400 py-2"
+                            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                          >
+                            <span>{item.label}</span>
+                            <ChevronDown className={`h-5 w-5 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+                          </button>
+                          
+                          {mobileServicesOpen && (
+                            <div className="pl-4 mt-2 space-y-3 border-l border-gray-700">
+                              {services.map((service) => (
+                                <div key={service.name} className="py-2">
+                                  <Link
+                                    href={service.path}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="font-semibold hover:text-cyan-400 block"
+                                  >
+                                    {service.name}
+                                  </Link>
+                                  {service.subOptions && (
+                                    <div className="pl-3 mt-1 space-y-2">
+                                      {service.subOptions.map((sub) => (
+                                        <Link
+                                          key={sub.name}
+                                          href={service.path}
+                                          onClick={() => setIsMobileMenuOpen(false)}
+                                          className="text-sm text-gray-300 hover:text-cyan-400 block"
+                                        >
+                                          {sub.name}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       ) : item.label === "Resources" ? (
                         <div>
                           <button 
