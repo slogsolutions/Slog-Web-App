@@ -4,17 +4,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Typewriter } from "react-simple-typewriter";
+import { useEffect, useState } from "react";
+
+// Local Assets (fallbacks)
 import updateslide2 from "../../assets/updateslide2.1.png";
 import slide1 from "../../assets/slide1.jpeg";
 import slide3 from "../../assets/slide3.png";
-import slide11 from "../../assets/slide11.png";
 import updateslide3 from "../../assets/updateslide3.png";
 import student_slide from "../../assets/slide10.png";
 
-const heroSlides = [
+interface HeroSlide {
+  id?: number;
+  position: number; // ✅ position will decide which slide it belongs to
+  image: string;
+  superTitle?: string;
+  title?: string;
+  description?: string;
+  route?: string;
+  buttonText?: string;
+}
+
+// ✅ Default static slides (with fixed positions)
+const defaultSlides: HeroSlide[] = [
   {
-    image: slide1,
-    dataAiHint: "Development",
+    position: 1,
+    image: slide1.src,
     superTitle: "Development",
     description:
       "We provide complete technology solutions, including custom software, advanced lab setups, and innovative product development—reliable, scalable, and tailored to your needs.",
@@ -22,17 +36,17 @@ const heroSlides = [
     buttonText: "Know More",
   },
   {
-    image: slide3,
-    dataAiHint: "modern classroom technology",
+    position: 2,
+    image: slide3.src,
     superTitle: "Corporate and Government Trainings",
     description:
-      "Advanced Summer Training and Internship programs with practical projects, 100% job guarantee, and placement support in Dehradun",
+      "Specialized corporate and government training programs designed to enhance technical skills, leadership, and productivity through hands-on learning and real-world projects.",
     route: "/training",
     buttonText: "Explore",
   },
   {
-    image: updateslide3,
-    dataAiHint: "OutBound Trainings",
+    position: 3,
+    image: updateslide3.src,
     superTitle: "Outbound Trainings",
     title: "Enhancing Skills Beyond the Workplace",
     description:
@@ -41,8 +55,8 @@ const heroSlides = [
     buttonText: "Know More",
   },
   {
-    image: updateslide2,
-    dataAiHint: "students collaborating computer",
+    position: 4,
+    image: updateslide2.src,
     superTitle: "Ministry of Defence",
     title: "Empowering the Defence Sector",
     description:
@@ -51,8 +65,8 @@ const heroSlides = [
     buttonText: "Explore",
   },
   {
-    image: student_slide,
-    dataAiHint: "smiling face",
+    position: 5,
+    image: student_slide.src,
     superTitle: "Student Training",
     title: "Empowering the Next Generation",
     description:
@@ -63,15 +77,50 @@ const heroSlides = [
 ];
 
 export default function Hero() {
+  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>(defaultSlides);
+
+
+useEffect(() => {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+  async function fetchSlides() {
+    try {
+      const res = await fetch(`${API_URL}/api/hero-slides/`);
+      const data: HeroSlide[] = await res.json();
+
+      if (Array.isArray(data)) {
+        // ✅ Create a map from backend by position
+        const backendMap = new Map(
+          data.map((slide) => [slide.position, slide])
+        );
+
+        // ✅ Merge: static first, backend overrides only same position
+        const mergedSlides = defaultSlides.map((slide) =>
+          backendMap.has(slide.position)
+            ? { ...slide, ...backendMap.get(slide.position) }
+            : slide
+        );
+
+        setHeroSlides(mergedSlides);
+      }
+    } catch (error) {
+      console.error("Error fetching hero slides:", error);
+    }
+  }
+
+  fetchSlides();
+}, []);
+
+
   return (
     <section id="home" className="relative w-full">
       {heroSlides.map((slide, index) => (
-        <div key={index} className="relative w-full h-screen">
+        <div key={slide.position} className="relative w-full h-screen">
           {/* Background Image */}
           <div className="relative w-full h-screen">
             <Image
               src={slide.image}
-              alt={slide.title || slide.superTitle}
+              alt={slide.title || slide.superTitle || `Slide ${index + 1}`}
               fill
               className="object-cover"
               priority={index === 0}
@@ -94,7 +143,7 @@ export default function Hero() {
                     index % 2 !== 0 ? "md:text-right" : "md:text-left"
                   } px-4 md:px-0`}
                 >
-                  <div className="[font-family:'Poiret_One',Helvetica] text-4xl md:text-6xl lg:text-7xl md:leading-[80px] font-semibold tracking-wide bg-gradient-to-r from-blue-300 via-cyan-300 to-teal-500 bg-clip-text text-transparent mb-2 md:mb-4">
+                  <div className="[font-family:'Poiret_One',Helvetica] text-4xl md:text-6xl lg:text-7xl md:leading-[80px] font-semibold tracking-wide bg-gradient-to-r from-blue-300 via-cyan-300 to-teal-500 bg-clip-text text-transparent mb-2 md:mb-4 pb-2">
                     {slide.superTitle}
                   </div>
 
@@ -143,14 +192,16 @@ export default function Hero() {
                     {slide.description}
                   </p>
 
-                  <Link href={slide.route}>
-                    <Button
-                      size="lg"
-                      className="mt-4 md:mt-8 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg rounded-lg"
-                    >
-                      {slide.buttonText}
-                    </Button>
-                  </Link>
+                  {slide.route && (
+                    <Link href={slide.route}>
+                      <Button
+                        size="lg"
+                        className="mt-4 md:mt-8 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg rounded-lg"
+                      >
+                        {slide.buttonText}
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

@@ -155,7 +155,7 @@ export default function Footer() {
               ))}
             </div>
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Slog Solutions. All rights reserved.
+              © 2018 Slog Solutions. All rights reserved.
             </p>
           </div>
         </div>
