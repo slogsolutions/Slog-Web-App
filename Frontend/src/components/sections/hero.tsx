@@ -79,33 +79,38 @@ const defaultSlides: HeroSlide[] = [
 export default function Hero() {
   const [heroSlides, setHeroSlides] = useState<HeroSlide[]>(defaultSlides);
 
-  useEffect(() => {
-    async function fetchSlides() {
-      try {
-        const res = await fetch("http://127.0.0.1:8000/api/hero-slides/");
-        const data: HeroSlide[] = await res.json();
 
-        if (Array.isArray(data)) {
-          // ✅ Create a map from backend by position
-          const backendMap = new Map(
-            data.map((slide) => [slide.position, slide])
-          );
+useEffect(() => {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
-          // ✅ Merge: static first, backend overrides only same position
-          const mergedSlides = defaultSlides.map((slide) =>
-            backendMap.has(slide.position)
-              ? { ...slide, ...backendMap.get(slide.position) }
-              : slide
-          );
+  async function fetchSlides() {
+    try {
+      const res = await fetch(`${API_URL}/api/hero-slides/`);
+      const data: HeroSlide[] = await res.json();
 
-          setHeroSlides(mergedSlides);
-        }
-      } catch (error) {
-        console.error("Error fetching hero slides:", error);
+      if (Array.isArray(data)) {
+        // ✅ Create a map from backend by position
+        const backendMap = new Map(
+          data.map((slide) => [slide.position, slide])
+        );
+
+        // ✅ Merge: static first, backend overrides only same position
+        const mergedSlides = defaultSlides.map((slide) =>
+          backendMap.has(slide.position)
+            ? { ...slide, ...backendMap.get(slide.position) }
+            : slide
+        );
+
+        setHeroSlides(mergedSlides);
       }
+    } catch (error) {
+      console.error("Error fetching hero slides:", error);
     }
-    fetchSlides();
-  }, []);
+  }
+
+  fetchSlides();
+}, []);
+
 
   return (
     <section id="home" className="relative w-full">
