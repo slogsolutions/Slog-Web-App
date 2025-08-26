@@ -26,7 +26,7 @@ const heroSlides = [
     dataAiHint: "modern classroom technology",
     superTitle: "Corporate and Government Trainings",
     description:
-      "Advanced Summer Training and Internship programs with practical projects, 100% job guarantee, and placement support in Dehradun",
+      "Industry-aligned corporate and government training programs featuring modern classroom technology, hands-on projects, and real-world internship opportunities.",
     route: "/training",
     buttonText: "Explore",
   },
