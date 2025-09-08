@@ -153,6 +153,7 @@ useEffect(() => {
                       <Typewriter
                         words={[
                           "Software Development",
+                          "AI & ML Solutions",
                           "Lab Setup",
                           "Product Development",
                         ]}
