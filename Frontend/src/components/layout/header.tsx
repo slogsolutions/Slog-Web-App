@@ -119,8 +119,8 @@ const services = [
 
 const resourcesItems = [
   { href: "/about", label: "About Us" },
-  { href: "#joinus", label: "Join Us" },
   { href: "/gallery", label: "Gallery" },
+  { href: "#joinus", label: "Join Us" },
   
   { href: "https://slogedu.slogsolutions.com/", label: "LMS" },
   { href: "https://backup.slogsolutions.com/certificateverify.php", label: "Verify Certificates" },
