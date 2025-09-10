@@ -4,6 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import NextTopLoader from 'nextjs-toploader';
+// In your layout.jsx or _app.jsx
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export const metadata: Metadata = {
   title: 'Slog Solutions',
