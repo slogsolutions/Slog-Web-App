@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary_storage.storage import MediaCloudinaryStorage
 
 
 class Mentor(models.Model):
@@ -62,7 +63,10 @@ class Gallery(models.Model):
         choices=CATEGORY_CHOICES,
         default="corporate"
     )
-    image = models.ImageField(upload_to="gallery/")
+    image = models.ImageField(
+        upload_to="gallery/",
+        storage=MediaCloudinaryStorage(),
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
