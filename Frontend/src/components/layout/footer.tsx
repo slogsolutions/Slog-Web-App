@@ -42,7 +42,11 @@ export default function Footer() {
               <p className="text-gray-300 text-sm mb-4">
                 Empowering individuals and organizations with excellence in training and development.
               </p>
-              <div className="flex items-center text-gray-300 mb-2">
+              <div className="flex items-center text-gray-300 mb-2">Registered Address
+                <MapPin className="h-4 w-4 mr-2 text-teal-600" />
+                <span className="text-sm">M/s Slog Solutions Pvt Ltd 349/1, Mohabewala Post Office Road, Dehradun (UK), PIN - 248001</span>
+              </div>
+              <div className="flex items-center text-gray-300 mb-2">Corporate Address: 
                 <MapPin className="h-4 w-4 mr-2 text-teal-600" />
                 <span className="text-sm">SLOG, 1st Floor, Institution of Engineers, ISBT, Dehradun, Uttarakhand, India</span>
               </div>
