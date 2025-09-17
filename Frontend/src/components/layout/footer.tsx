@@ -110,17 +110,17 @@ export default function Footer() {
                   Email Addresses
                 </h4>
                 <div className="flex flex-col space-y-1 ml-6">
-                  <a href="mailto:slogcounsellor@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
-                    slogcounsellor@gmail.com
-                  </a>
                   <a href="mailto:info@slogsolutions.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     info@slogsolutions.com
+                  </a>
+                  <a href="mailto:slog.doon@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
+                    slog.doon@gmail.com
                   </a>
                   <a href="mailto:slog.training@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     slog.training@gmail.com
                   </a>
-                  <a href="mailto:slog.doon@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
-                    slog.doon@gmail.com
+                  <a href="mailto:slogcounsellor@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
+                    slogcounsellor@gmail.com
                   </a>
                 </div>
               </div>
