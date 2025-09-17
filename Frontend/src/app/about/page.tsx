@@ -148,8 +148,6 @@ export default function AboutUsPage(): JSX.Element {
             </p>
           </section>
 
-          {/* Call to Action */}
-
         </div>
       </div>
     </div>
