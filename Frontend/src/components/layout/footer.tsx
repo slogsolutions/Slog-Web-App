@@ -3,7 +3,7 @@ import Image from 'next/image';
 import logo from "../../assets/logo.png";
 import { Facebook, Twitter, Linkedin, Instagram, Youtube, MapPin, Phone, Mail, Building2, GraduationCap } from 'lucide-react';
 import EnquiryForm from '../EnquiryForm';
-
+import gemImg from '../../assets/GeM.png'
 
 
 const footerLinks = [
@@ -127,6 +127,7 @@ export default function Footer() {
                   <a href="mailto:slogcounsellor@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     slogcounsellor@gmail.com
                   </a>
+                  <img src={gemImg.src}  />
                 </div>
               </div>
             </div>

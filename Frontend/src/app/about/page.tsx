@@ -2,8 +2,9 @@
 
 'use client';
 
+import IndiaMap from '@/components/IndiaMap';
 import { useState, useEffect } from 'react';
-
+import GeMimage from '../../assets/GeM.png'
 export default function AboutUsPage(): JSX.Element {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -147,7 +148,10 @@ export default function AboutUsPage(): JSX.Element {
               stands as a trusted partner in innovation and growth.
             </p>
           </section>
-
+          <IndiaMap />
+          {/* <img src={GeMimage.src}
+          width={300}
+          height={300}/> */}
           {/* Call to Action */}
 
         </div>
