@@ -4,6 +4,11 @@ import logo from "../../assets/logo.png";
 import { Facebook, Twitter, Linkedin, Instagram, Youtube, MapPin, Phone, Mail, Building2, GraduationCap } from 'lucide-react';
 import EnquiryForm from '../EnquiryForm';
 import gemImg from '../../assets/GeM.png'
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a2751cc48626360ebbf354d117191475b38b0b09
 
 
 const footerLinks = [
