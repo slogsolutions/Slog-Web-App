@@ -5,7 +5,11 @@ from cloudinary_storage.storage import MediaCloudinaryStorage
 class Mentor(models.Model):
     name = models.CharField(max_length=200)
     designation = models.CharField(max_length=400)
-    image = models.ImageField(upload_to='mentors/')
+    # image = models.ImageField(upload_to='mentors/')
+    image = models.ImageField(
+        upload_to='mentors/',
+        storage=MediaCloudinaryStorage()
+    )
     sort_order = models.PositiveIntegerField(
         default=0,
         db_index=True,

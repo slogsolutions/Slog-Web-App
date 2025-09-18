@@ -42,7 +42,7 @@ const navItems = [
   { href: "/", label: "Home" },
   { href: "/#services", label: "Services" },
   { href: "/#resources", label: "Resources" },
-  { href: "/mentors", label: "Mentors" },
+  { href: "/mentors", label: "Slog Ascend" },
   { href: "/#contact", label: "Contact" },
 ];
 

@@ -148,11 +148,6 @@ export default function AboutUsPage(): JSX.Element {
               stands as a trusted partner in innovation and growth.
             </p>
           </section>
-          <IndiaMap />
-          {/* <img src={GeMimage.src}
-          width={300}
-          height={300}/> */}
-          {/* Call to Action */}
 
         </div>
       </div>
