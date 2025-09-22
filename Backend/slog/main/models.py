@@ -1,7 +1,6 @@
 from django.db import models
 from cloudinary_storage.storage import MediaCloudinaryStorage
 
-
 class Mentor(models.Model):
     name = models.CharField(max_length=200)
     designation = models.CharField(max_length=400)
@@ -87,3 +86,4 @@ class HeroSlide(models.Model):
 
     def __str__(self):
         return f"Slide {self.position}"
+
