@@ -141,7 +141,7 @@ export default function AboutUsPage(): JSX.Element {
             </p>
           </section>
           <section id='ourcenters' className={`transition-transform duration-700 delay-400 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
-            <h2 className="text-2xl font-semibold text-teal-300 mb-3">Our centers</h2>
+            <h2 className="text-2xl font-semibold text-teal-300 mb-3">Our collaborative centers</h2>
             <p className="mb-6">
               With years of expertise, industry collaborations, and a strong
               track record of government and corporate projects, Slog Solutions
