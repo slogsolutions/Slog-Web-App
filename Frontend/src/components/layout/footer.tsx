@@ -118,16 +118,13 @@ export default function Footer() {
                   <a href="mailto:info@slogsolutions.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     info@slogsolutions.com
                   </a>
-                  <a href="mailto:slog.doon@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
-                    slog.doon@gmail.com
-                  </a>
-                  <a href="mailto:slog.training@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
+                                    <a href="mailto:slog.training@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     slog.training@gmail.com
                   </a>
                   <a href="mailto:slogcounsellor@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     slogcounsellor@gmail.com
                   </a>
-                  <img src={gemImg.src} className="h-12 w-40 mt-2" />
+                  <img src={gemImg.src} className="h-10 w-40 mt-2" />
                 </div>
               </div>
             </div>
