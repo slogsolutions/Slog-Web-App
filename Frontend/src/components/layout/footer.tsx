@@ -124,7 +124,7 @@ export default function Footer() {
                   <a href="mailto:slogcounsellor@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     slogcounsellor@gmail.com
                   </a>
-                  <img src={gemImg.src} className="h-10 w-45 mt-2" />
+                  <img src={gemImg.src} className="h-11 w-42 mt-2" />
                 </div>
               </div>
             </div>
