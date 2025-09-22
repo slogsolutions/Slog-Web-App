@@ -50,7 +50,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center text-gray-300 mb-2">Corporate Address:
                 <MapPin className="h-4 w-4 mr-2 text-teal-600" />
-                <span className="text-sm">SLOG, 1st Floor, Institution of Engineers, ISBT, Dehradun, Uttarakhand, India</span>
+                <span className="text-sm">SLOG, 1st Floor, Institution of Engineers, ISBT, Dehradun, (UK), 248001</span>
               </div>
               <div className="flex items-center text-gray-300 mb-2">
                 <Link href="/about#ourcenters" className="flex-shrink-0">
@@ -118,13 +118,13 @@ export default function Footer() {
                   <a href="mailto:info@slogsolutions.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     info@slogsolutions.com
                   </a>
-                                    <a href="mailto:slog.training@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
+                    <a href="mailto:slog.training@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     slog.training@gmail.com
                   </a>
                   <a href="mailto:slogcounsellor@gmail.com" className="text-gray-300 hover:text-purple-400 text-sm transition-colors">
                     slogcounsellor@gmail.com
                   </a>
-                  <img src={gemImg.src} className="h-10 w-40 mt-2" />
+                  <img src={gemImg.src} className="h-10 w-45 mt-2" />
                 </div>
               </div>
             </div>
