@@ -6,8 +6,6 @@ import EnquiryForm from '../EnquiryForm';
 import gemImg from '../../assets/GeM.png'
 
 
-
-
 const footerLinks = [
   { href: "#", label: "Home" },
   { href: "/development", label: "Development" },

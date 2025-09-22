@@ -148,7 +148,7 @@ export default function AboutUsPage(): JSX.Element {
               stands as a trusted partner in innovation and growth.
             </p>
           </section>
-
+          <IndiaMap />
         </div>
       </div>
     </div>
