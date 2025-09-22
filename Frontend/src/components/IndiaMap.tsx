@@ -184,6 +184,7 @@ const MapComponent: React.FC<{ places: Place[] }> = ({ places }) => {
 
   return (
     <div style={{ flex: 1, minWidth: 700, height: "auto" }}>
+      <h3 className="text-2xl font-semibold text-center text-[#F5F5F5] mb-3">Our successfully delivered projects</h3>
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{ scale: 850, center: [82.8, 25] }}
@@ -228,6 +229,7 @@ const MapComponent: React.FC<{ places: Place[] }> = ({ places }) => {
           </Marker>
         ))}
       </ComposableMap>
+
     </div>
   );
 };
@@ -238,6 +240,7 @@ const IEIMap: React.FC = () => {
 
   return (
     <div style={{ flex: 1, minWidth: 700, height: "auto" }}>
+      <h3 className="text-2xl font-semibold text-center text-[#F5F5F5] mb-3">Our collaborative centers</h3>
       <ComposableMap
         projection="geoMercator"
         projectionConfig={{ scale: 850, center: [82.8, 25] }}
@@ -267,9 +270,7 @@ const IEIMap: React.FC = () => {
             <React.Fragment key={idx}>
               <Marker coordinates={coords} onClick={() => setExpandedState(expandedState === stateObj.state ? null : stateObj.state)}>
                 <circle r={4} fill="#2a9d8f" stroke="#264653" strokeWidth={1} cursor="pointer" />
-                <text textAnchor="middle" y={-10} style={{ fontFamily: "Arial", fontSize: "14px", fill: "#111" }}>
-                  {stateObj.state}
-                </text>
+
               </Marker>
 
               {expandedState === stateObj.state &&
@@ -278,6 +279,7 @@ const IEIMap: React.FC = () => {
                   if (!cityCoords) return null;
                   return (
                     <Marker key={i} coordinates={cityCoords}>
+
                       <circle r={4} fill="#e76f51" stroke="#333" strokeWidth={0.8} />
                       <text textAnchor="middle" y={-8} style={{ fontFamily: "Arial", fontSize: "12px", fill: "#111" }}>
                         {city}
@@ -289,13 +291,14 @@ const IEIMap: React.FC = () => {
           );
         })}
       </ComposableMap>
+
     </div>
   );
 };
 
 const IndiaMap: React.FC = () => {
   return (
-    <div style={{ display: "flex", gap: "30px", justifyContent: "center", alignItems: "flex-start" }}>
+    <div style={{ display: "flex", gap: "40px", justifyContent: "center", alignItems: "flex-start" }}>
       {/* First Map */}
       <MapComponent places={places} />
 
