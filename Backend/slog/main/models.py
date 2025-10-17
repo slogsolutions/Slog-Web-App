@@ -1,13 +1,15 @@
 from django.db import models
 from cloudinary_storage.storage import MediaCloudinaryStorage
 
+# Reusable Cloudinary storage instance (optional but handy)
+cloudinary_storage = MediaCloudinaryStorage()
+
 class Mentor(models.Model):
     name = models.CharField(max_length=200)
     designation = models.CharField(max_length=400)
-    # image = models.ImageField(upload_to='mentors/')
     image = models.ImageField(
         upload_to='mentors/',
-        storage=MediaCloudinaryStorage()
+        storage=cloudinary_storage
     )
     sort_order = models.PositiveIntegerField(
         default=0,
@@ -22,7 +24,6 @@ class Mentor(models.Model):
         return self.name
 
 
-
 CATEGORY_CHOICES = [
     ("All Courses", "All Courses"),
     ("Computer Science", "Computer Science"),
@@ -34,9 +35,13 @@ CATEGORY_CHOICES = [
     ("Creative Arts", "Creative Arts"),
 ]
 
+
 class Course(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="courses/")
+    image = models.ImageField(
+        upload_to="courses/",
+        storage=cloudinary_storage
+    )
     data_ai_hint = models.CharField(max_length=200, blank=True)
     duration = models.CharField(max_length=50)
     price = models.CharField(max_length=20)
@@ -52,38 +57,42 @@ class Course(models.Model):
 
 class Gallery(models.Model):
     CATEGORY_CHOICES = [
-    ("development", "Development"),
-    ("corporate_defence_trainings", "Corporate & Defence Trainings"),
-    ("outbound_trainings", "Outbound Trainings"),
-    ("ministry_of_defence", "Ministry of Defence"),
-    ("student_trainings", "Student Trainings"),
-    ("achievements", "Achievements & Moments"),  # For photos, momentos, certificates
-]
+        ("development", "Development"),
+        ("corporate_defence_trainings", "Corporate & Defence Trainings"),
+        ("outbound_trainings", "Outbound Trainings"),
+        ("ministry_of_defence", "Ministry of Defence"),
+        ("student_trainings", "Student Trainings"),
+        ("achievements", "Achievements & Moments"),
+    ]
 
     title = models.CharField(max_length=200, blank=True, null=True)
     category = models.CharField(
         max_length=50,
         choices=CATEGORY_CHOICES,
-        default="corporate"
+        default="corporate_defence_trainings"
     )
     image = models.ImageField(
         upload_to="gallery/",
-        storage=MediaCloudinaryStorage(),
+        storage=cloudinary_storage,
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ["category", "-created_at"]  # ✅ group by category first
+        ordering = ["category", "-created_at"]
 
     def __str__(self):
         return f"{self.title or 'Image'} ({self.get_category_display()})"
+
+
 class HeroSlide(models.Model):
     position = models.PositiveIntegerField(unique=True)  # 1 to 5 fixed
-    image = models.ImageField(upload_to="hero_slides/")
+    image = models.ImageField(
+        upload_to="hero_slides/",
+        storage=cloudinary_storage
+    )
 
     class Meta:
         ordering = ["position"]
 
     def __str__(self):
         return f"Slide {self.position}"
-
