@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Course, Mentor,HeroSlide, Gallery
+from .models import Course, Mentor,HeroSlide, Gallery, Product
 
 
 @admin.register(Mentor)
@@ -12,7 +12,19 @@ class MentorAdmin(admin.ModelAdmin):
     ordering = ("sort_order", "id")
     search_fields = ("name", "designation")
 
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ("name", "photo_preview", "description")
+    search_fields = ("name", "description")
+    readonly_fields = ("photo_preview",)
 
+    def photo_preview(self, obj):
+        if obj.photo:
+            return format_html('<img src="{}" width="80" style="border-radius:4px;" />', obj.photo.url)
+        return "No Image"
+
+    photo_preview.short_description = "Photo Preview"
+    
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = ("title", "category", "duration", "price")

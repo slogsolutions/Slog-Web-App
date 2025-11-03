@@ -374,7 +374,7 @@ export default function Header() {
 
           {/* Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="https://slogsolutions.onrender.com/admin/login/?next=/admin/">
+            <Link href="https://slogsolutions.com/admin">
               <Button variant="outline" className="rounded-full w-full">
                 Login / Sign Up
               </Button>

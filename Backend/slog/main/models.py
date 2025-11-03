@@ -96,3 +96,23 @@ class HeroSlide(models.Model):
 
     def __str__(self):
         return f"Slide {self.position}"
+    
+class Product(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    photo = models.ImageField(
+        upload_to="products/",
+        storage=cloudinary_storage,
+        help_text="The main image for the product."
+    )
+    features = models.TextField(
+        help_text="List each feature on a new line or use bullet points. This will be split into a list on the frontend."
+    )
+    
+    class Meta:
+        ordering = ["name"]
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
+
+    def __str__(self):
+        return self.name
