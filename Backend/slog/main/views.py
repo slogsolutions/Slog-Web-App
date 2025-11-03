@@ -7,8 +7,8 @@ from .models import Course, Mentor, Gallery
 from .serializers import CourseSerializer, MentorSerializer, GallerySerializer
 from .models import Gallery
 from .serializers import GallerySerializer
-from .models import Course, Mentor, HeroSlide
-from .serializers import CourseSerializer, MentorSerializer, HeroSlideSerializer
+from .models import Course, Mentor, HeroSlide, Product
+from .serializers import CourseSerializer, MentorSerializer, HeroSlideSerializer, ProductSerializer
 
 
 class CourseViewSet(viewsets.ModelViewSet):

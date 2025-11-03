@@ -511,7 +511,7 @@ export default function Header() {
                 <div className="mt-8 flex flex-col space-y-4">
                   
                   <Link 
-                    href="https://slogsolutions.onrender.com/admin/login/?next=/admin/"
+                    href="https://slogsolutions.com/admin/"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <Button variant="outline" className="rounded-full w-full">
