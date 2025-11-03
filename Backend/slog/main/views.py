@@ -15,6 +15,17 @@ class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()      # <-- add this so DRF router can infer basename
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        # You can keep this dynamic filtering on top of the base queryset
+        queryset = super().get_queryset()  # now uses the class queryset
+        section = self.request.query_params.get('section')
+        if section is not None:
+            queryset = queryset.filter(section=section)
+        return queryset
 
 class MentorViewSet(viewsets.ModelViewSet):
     queryset = Mentor.objects.all()

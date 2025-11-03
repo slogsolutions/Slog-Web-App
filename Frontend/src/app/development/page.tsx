@@ -3,12 +3,25 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import EnquiryForm from "../../components/EnquiryForm";
+import { ProductSection } from "../../components/sections/ProductSection";
+
+// Define a more specific type for services
+type Service = {
+  id: number;
+  title: string;
+  sectionKey: "software_development" | "lab_setup" | "product_development";
+  subtitle: string;
+  description: string;
+  features: string[];
+  icon: React.ReactNode;
+};
 
 // Service data
-const services = [
+const services: Service[] = [
   {
     id: 1,
     title: "Software Development",
+    sectionKey: "software_development",
     subtitle: "Custom software tailored to your needs.",
     description: "We create robust, scalable, and efficient software solutions designed specifically for your business requirements. Our team uses the latest technologies and agile methodologies to deliver high-quality applications that drive your business forward.",
     features: [
@@ -28,6 +41,7 @@ const services = [
   {
     id: 2,
     title: "Lab Setup",
+    sectionKey: "lab_setup",
     subtitle: "End-to-end laboratory infrastructure setup.",
     description: "We provide comprehensive laboratory setup services including IT infrastructure, specialized software installation, equipment integration, and network configuration. Our solutions ensure your lab operates efficiently and securely.",
     features: [
@@ -47,6 +61,7 @@ const services = [
   {
     id: 3,
     title: "Product Development",
+    sectionKey: "product_development",
     subtitle: "Innovative product creation and delivery.",
     description: "From concept to market, we guide you through the entire product development lifecycle. Our user-centered approach ensures we create products that not only meet technical requirements but also deliver exceptional user experiences.",
     features: [
@@ -262,6 +277,9 @@ export default function DevelopmentServices() {
                   </button>
                       }
                   />
+
+                  {/* Conditionally render ProductSection here */}
+                  <ProductSection section={services[activeTab].sectionKey} />
                   
                 </div>
                 

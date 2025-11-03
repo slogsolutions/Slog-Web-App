@@ -14,7 +14,8 @@ class MentorAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "photo_preview", "description")
+    list_display = ("name", "section", "photo_preview", "description")
+    list_filter = ("section",)
     search_fields = ("name", "description")
     readonly_fields = ("photo_preview",)
 

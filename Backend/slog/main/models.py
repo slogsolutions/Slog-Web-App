@@ -1,5 +1,6 @@
 from django.db import models
 from cloudinary_storage.storage import MediaCloudinaryStorage
+from django.contrib.postgres.fields import ArrayField # Assuming PostgreSQL for ArrayField, but since we don't know the DB, I'll use TextField and split for simplicity, or just a simple CharField for features. Let's use a simple TextField for features and instruct the user to use a delimiter like a newline or bullet points.
 
 # Reusable Cloudinary storage instance (optional but handy)
 cloudinary_storage = MediaCloudinaryStorage()
@@ -96,8 +97,23 @@ class HeroSlide(models.Model):
 
     def __str__(self):
         return f"Slide {self.position}"
-    
+
+
+# --- NEW PRODUCT MODEL ---
+
+PRODUCT_SECTION_CHOICES = [
+    ("software_development", "Software Development"),
+    ("lab_setup", "Lab Setup"),
+    ("product_development", "Product Development"),
+]
+
 class Product(models.Model):
+    section = models.CharField(
+        max_length=50,
+        choices=PRODUCT_SECTION_CHOICES,
+        default="software_development",
+        help_text="The service section where this product will be displayed."
+    )
     name = models.CharField(max_length=255)
     description = models.TextField()
     photo = models.ImageField(
