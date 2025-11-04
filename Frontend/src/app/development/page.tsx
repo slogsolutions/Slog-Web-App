@@ -84,21 +84,21 @@ const services: Service[] = [
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
+    name: "Abhishek Gupta",
     role: "CTO, TechInnovate",
     content: "The software development team delivered beyond our expectations. Their attention to detail and commitment to quality was evident throughout the project.",
-    avatar: "SJ"
+    avatar: "AJ"
   },
   {
     id: 2,
-    name: "Michael Chen",
+    name: "Sarthak Gupta",
     role: "Lab Director, BioResearch Inc.",
     content: "Our lab setup was completed ahead of schedule and within budget. The infrastructure has been running flawlessly for over a year now.",
-    avatar: "MC"
+    avatar: "SG"
   },
   {
     id: 3,
-    name: "Emma Rodriguez",
+    name: "Suhani Aggarwal",
     role: "Product Manager, LaunchPad",
     content: "The product development process was collaborative and innovative. They helped us turn our vision into a market-ready product that users love.",
     avatar: "ER"
