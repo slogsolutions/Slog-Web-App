@@ -147,68 +147,55 @@ useEffect(() => {
                     {slide.superTitle}
                   </div>
 
-                  {/* Title / Typewriter effect */}
-                  {index === 0 ? (
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
-                      <Typewriter
-                        words={[
-                          "Software Development",
-                          "AI & ML Solutions",
-                          "Lab Setup",
-                          "Product Development",
-                        ]}
-                        loop={0}
-                        cursor
-                        cursorStyle="|"
-                        typeSpeed={50}
-                        deleteSpeed={30}
-                        delaySpeed={1500}
-                      />
-                    </h2>
-                  ) : index === 1 ? (
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
-                      <Typewriter
-                        words={[
-                          "Advanced IT & Digital Transformation",
-                          "Get 250+ Online/Offline Courses",
-                          "Industry-Oriented Training Curriculum",
-                          "Cutting-Edge Technology Training",
-                          "Cybersecurity & Data Protection Programs",
-                        ]}
-                        loop={0}
-                        cursor
-                        cursorStyle="."
-                        typeSpeed={50}
-                        deleteSpeed={30}
-                        delaySpeed={1500}
-                      />
-                    </h2>
-                  ) : (
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
-                      {slide.title}
-                    </h2>
-                  )}
-
-                  <p className="text-base md:text-xl lg:text-2xl mt-2 leading-6 md:leading-10 text-justify md:text-left">
-                    {slide.description}
-                  </p>
-
-                  {slide.route && (
-                    <Link href={slide.route}>
-                      <Button
-                        size="lg"
-                        className="mt-4 md:mt-8 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg rounded-lg"
-                      >
-                        {slide.buttonText}
-                      </Button>
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </section>
-  );
-}
+                  <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
+	                    <Typewriter
+	                      words={
+	                        index === 0
+	                          ? [
+	                              "AI & ML Solutions",
+	                              "Software Development",
+	                              "Lab Setup",
+	                              "Product Development",
+	                            ]
+	                          : index === 1
+	                          ? [
+	                              "Advanced IT & Digital Transformation",
+	                              "Get 250+ Online/Offline Courses",
+	                              "Industry-Oriented Training Curriculum",
+	                              "Cutting-Edge Technology Training",
+	                              "Cybersecurity & Data Protection Programs",
+	                            ]
+	                          : [slide.title || "Empowering Your Future"]
+	                      }
+	                      loop={0}
+	                      cursor
+	                      cursorStyle={index === 0 ? "|" : "."}
+	                      typeSpeed={50}
+	                      deleteSpeed={30}
+	                      delaySpeed={1500}
+	                    />
+	                  </h2>
+	
+                  <p className={`text-base md:text-xl lg:text-2xl mt-2 leading-6 md:leading-10 text-justify }`}>
+	                    {slide.description}
+	                  </p>
+	
+	                  {slide.route && (
+	                    <Link href={slide.route}>
+	                      <Button
+	                        size="lg"
+	                        className="mt-4 md:mt-8 px-6 md:px-8 py-4 md:py-6 text-base md:text-lg rounded-lg"
+	                      >
+	                        {slide.buttonText}
+	                      </Button>
+	                    </Link>
+	                  )}
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      ))}
+	    </section>
+	  );
+	}
