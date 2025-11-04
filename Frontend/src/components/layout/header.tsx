@@ -374,11 +374,13 @@ export default function Header() {
 
           {/* Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="https://slogsolutions.com/admin">
-              <Button variant="outline" className="rounded-full w-full">
-                Login / Sign Up
-              </Button>
-            </Link>
+            <JoinUsForm
+              triggerButton={
+                <Button variant="outline" className="rounded-full w-full">
+                  Join Us
+                </Button>
+              }
+            />
               <EnquiryForm
                   triggerButton={
             <Button className="rounded-full bg-cyan-500 hover:bg-cyan-600 text-white">
@@ -510,14 +512,17 @@ export default function Header() {
                 
                 <div className="mt-8 flex flex-col space-y-4">
                   
-                  <Link 
-                    href="https://slogsolutions.com/admin/"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    <Button variant="outline" className="rounded-full w-full">
-                      Login / Sign Up
-                    </Button>
-                  </Link>
+                  <JoinUsForm
+                    triggerButton={
+                      <Button 
+                        variant="outline"
+                        className="rounded-full w-full"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Join Us
+                      </Button>
+                    }
+                  />
                   <EnquiryForm
                     triggerButton={
                       <Button 
