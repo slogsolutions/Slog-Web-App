@@ -140,14 +140,12 @@ export default function AboutUsPage(): JSX.Element {
               stands as a trusted partner in innovation and growth.
             </p>
           </section>
-          <section id='ourcenters' className={`transition-transform duration-700 delay-400 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
-            <h2 className="text-2xl font-semibold text-teal-300 mb-3">Our collaborative centers</h2>
-            <p className="mb-6">
-              With years of expertise, industry collaborations, and a strong
-              track record of government and corporate projects, Slog Solutions
-              stands as a trusted partner in innovation and growth.
-            </p>
-          </section>
+	          <section id='ourcenters' className={`transition-transform duration-700 delay-400 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
+	            <h2 className="text-2xl font-semibold text-teal-300 mb-3">Our Collaborative Centers</h2>
+	            <p className="mb-6">
+	              Slog Solutions collaborates with various institutions and organizations across India to expand our reach and deliver high-quality training and technology solutions.
+	            </p>
+	          </section>
           <IndiaMap />
         </div>
       </div>
